@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Check } from "@lucide/astro";
+---
+
+<Layout title="Partnership | Cogito Software">
+  <main class="relative min-h-screen flex flex-col">
+    <section
+      class="grow flex items-center justify-center relative overflow-hidden py-20"
+    >
+      <div class="absolute inset-0 bg-grid-pattern z-0"></div>
+
+      <div class="container mx-auto px-4 z-10 relative">
+        <div class="max-w-4xl mx-auto text-center">
+          <div
+            class="inline-block mb-6 px-4 py-1.5 rounded-full glass text-sm font-mono text-secondary animate-bounce"
+          >
+            🤝 Let's Grow Together
+          </div>
+
+          <h1
+            class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight"
+          >
+            We Build. <br />
+            <span
+              class="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary"
+              >You Sell.</span
+            >
+          </h1>
+
+          <p
+            class="text-xl md:text-2xl text-base-content/70 mb-12 max-w-2xl mx-auto font-light"
+          >
+            Lightning fast iterations. Reliable delivery. Partner with us to
+            offer premium software development to your clients without the
+            overhead.
+          </p>
+
+          <div class="glass-card max-w-2xl mx-auto p-8 text-left mb-12">
+            <h3 class="text-2xl font-bold mb-4">Why Partner with Cogito?</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <div
+                  class="mt-1 w-5 h-5 rounded-full bg-success/20 flex items-center justify-center text-success shrink-0"
+                >
+                  <Check class="w-3 h-3" />
+                </div>
+                <span
+                  ><strong>Speed:</strong> We deliver prototypes in days, not months.</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="mt-1 w-5 h-5 rounded-full bg-success/20 flex items-center justify-center text-success shrink-0"
+                >
+                  <Check class="w-3 h-3" />
+                </div>
+                <span
+                  ><strong>Quality:</strong> Modern stack (Astro, Svelte, Node/Python).
+                  No legacy code.</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <div
+                  class="mt-1 w-5 h-5 rounded-full bg-success/20 flex items-center justify-center text-success shrink-0"
+                >
+                  <Check class="w-3 h-3" />
+                </div>
+                <span
+                  ><strong>Reliability:</strong> We handle the tech, you handle the
+                  client relationship.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="mailto:partners@cogitosoftware.com"
+            class="btn btn-secondary btn-lg text-lg px-8 shadow-lg shadow-secondary/30 hover:shadow-secondary/50 transition-all"
+          >
+            Become a Partner
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

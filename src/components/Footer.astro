@@ -1,0 +1,32 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 border-t border-base-content/10 bg-base-100">
+  <div
+    class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6"
+  >
+    <div class="text-center md:text-left">
+      <div class="font-bold text-xl mb-2">Cogito Software</div>
+      <p class="text-sm text-base-content/60">
+        Building the future with AI & Modern Web.
+      </p>
+    </div>
+
+    <div class="flex gap-6 text-sm text-base-content/60">
+      <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a
+      >
+      <a href="#" class="hover:text-primary transition-colors"
+        >Terms of Service</a
+      >
+      <a
+        href="mailto:contact@cogitosoftware.com"
+        class="hover:text-primary transition-colors">Contact</a
+      >
+    </div>
+
+    <div class="text-sm text-base-content/40 font-mono">
+      © {currentYear} Cogito Software.
+    </div>
+  </div>
+</footer>

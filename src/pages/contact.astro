@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Mail, MapPin, Phone, Send } from "@lucide/astro";
+---
+
+<Layout title="Contact Us | Cogito Software">
+  <main class="pt-32 pb-20 min-h-screen flex flex-col">
+    <div class="container mx-auto px-6 max-w-6xl grow">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Contact Info -->
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">
+            Let's build something meaningful.
+          </h1>
+          <p class="text-xl text-base-content/70 mb-12 leading-relaxed">
+            Whether you have a concrete idea or just a vague concept, we're
+            ready to help you turn it into reality. No useless software, just
+            results.
+          </p>
+
+          <div class="space-y-8">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0"
+              >
+                <Mail class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-1">Email Us</h3>
+                <a
+                  href="mailto:hello@cogitosoftware.com"
+                  class="text-base-content/70 hover:text-primary transition-colors"
+                >
+                  hello@cogitosoftware.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0"
+              >
+                <MapPin class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-1">Visit Us</h3>
+                <p class="text-base-content/70">
+                  123 Tech Boulevard, Suite 404<br />
+                  San Francisco, CA 94107
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div
+                class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent shrink-0"
+              >
+                <Phone class="w-6 h-6" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-1">Call Us</h3>
+                <a
+                  href="tel:+15551234567"
+                  class="text-base-content/70 hover:text-accent transition-colors"
+                >
+                  +1 (555) 123-4567
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div
+          class="bg-base-200/30 p-8 md:p-10 rounded-3xl border border-base-content/5"
+        >
+          <h2 class="text-2xl font-bold mb-6">Send us a message</h2>
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">First Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="John"
+                  class="input input-bordered bg-base-100"
+                />
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Last Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Doe"
+                  class="input input-bordered bg-base-100"
+                />
+              </div>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                class="input input-bordered bg-base-100"
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Project Type</span>
+              </label>
+              <select class="select select-bordered bg-base-100">
+                <option disabled selected>Select a project type</option>
+                <option>MVP Development</option>
+                <option>Custom Solution</option>
+                <option>Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Message</span>
+              </label>
+              <textarea
+                class="textarea textarea-bordered h-32 bg-base-100"
+                placeholder="Tell us about your project..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">
+              Send Message
+              <Send class="w-4 h-4 ml-2" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

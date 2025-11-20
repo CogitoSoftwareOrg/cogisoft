@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+>
+  <!-- Background Elements -->
+  <div class="absolute inset-0 bg-grid-pattern z-0"></div>
+  <div class="geometric-lines">
+    <div
+      class="line w-full h-[1px] top-1/4 left-0 animate-pulse"
+      style="animation-duration: 3s;"
+    >
+    </div>
+    <div
+      class="line w-[1px] h-full top-0 left-1/3 animate-pulse"
+      style="animation-duration: 4s;"
+    >
+    </div>
+    <div
+      class="line w-full h-[1px] bottom-1/3 left-0 animate-pulse"
+      style="animation-duration: 5s;"
+    >
+    </div>
+    <div
+      class="absolute top-20 right-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"
+    >
+    </div>
+    <div
+      class="absolute bottom-20 left-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse"
+      style="animation-delay: 1s;"
+    >
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 z-10 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <div
+        class="inline-block mb-6 px-4 py-1.5 rounded-full glass text-sm font-mono text-primary animate-bounce"
+      >
+        🚀 Fast-Track Your MVP
+      </div>
+
+      <h1
+        class="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight"
+      >
+        Turn your idea into a <br />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+          >working product</span
+        >
+        in 7 days.
+      </h1>
+
+      <p
+        class="text-xl md:text-2xl text-base-content/70 mb-10 max-w-2xl mx-auto font-light"
+      >
+        Fullstack Prototype for <span class="line-through text-base-content/40"
+          >$999</span
+        >
+        <span class="font-bold text-primary">$499</span>
+        <span
+          class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full ml-2"
+          >Early Adopters</span
+        >. Validate your hypothesis with a production-ready build.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a
+          href="#offer"
+          class="btn btn-primary btn-lg text-lg px-8 shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-all"
+        >
+          Get Started
+        </a>
+        <a
+          href="#portfolio"
+          class="btn btn-ghost btn-lg text-lg px-8 border border-base-content/10 hover:bg-base-content/5"
+        >
+          View Portfolio
+        </a>
+      </div>
+
+      <!-- Stats/Trust Indicators -->
+      <div
+        class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-base-content/10 pt-8"
+      >
+        <div>
+          <div class="text-3xl font-bold text-primary">7 Days</div>
+          <div class="text-sm text-base-content/60">Delivery Time</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">$499</div>
+          <div class="text-sm text-base-content/60">Early Adopters</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">100%</div>
+          <div class="text-sm text-base-content/60">Code Ownership</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-primary">Modern</div>
+          <div class="text-sm text-base-content/60">Tech Stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

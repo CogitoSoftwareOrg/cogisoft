@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Cpu, Database, Network } from "@lucide/astro";
+---
+
+<Layout title="Custom Solutions | Cogito Software">
+  <main class="relative min-h-screen flex flex-col">
+    <section
+      class="grow flex items-center justify-center relative overflow-hidden py-20"
+    >
+      <div class="absolute inset-0 bg-grid-pattern z-0"></div>
+
+      <div class="container mx-auto px-4 z-10 relative">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-16">
+            <h1
+              class="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight"
+            >
+              Engineering <br />
+              <span
+                class="text-transparent bg-clip-text bg-linear-to-r from-accent to-primary"
+                >Without Limits.</span
+              >
+            </h1>
+            <p
+              class="text-xl text-base-content/70 max-w-3xl mx-auto font-light"
+            >
+              For challenges that go beyond standard web apps. We architect and
+              build custom solutions tailored to your specific infrastructure
+              and data needs.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Card 1 -->
+            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+              <div
+                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+              >
+                <Cpu class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-bold mb-3">Self-Hosted AI</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">
+                Deploy Large Language Models (LLMs) on your own hardware. Keep
+                your data private and avoid API costs. We handle the
+                quantization, serving, and optimization.
+              </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+              <div
+                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+              >
+                <Database class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-bold mb-3">Data Pipelines</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">
+                Robust ETL processes and data warehousing. We build pipelines
+                that ingest, process, and visualize your business data in
+                real-time.
+              </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+              <div
+                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+              >
+                <Network class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-bold mb-3">Complex Integrations</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">
+                Connect disparate systems into a unified workflow. We specialize
+                in gluing together legacy software, modern APIs, and hardware
+                interfaces.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <p class="text-lg mb-6 text-base-content/60">
+              Every project is unique. Let's discuss your architecture.
+            </p>
+            <a
+              href="mailto:engineering@cogitosoftware.com"
+              class="btn btn-accent btn-lg text-lg px-8 shadow-lg shadow-accent/30 hover:shadow-accent/50 transition-all"
+            >
+              Consult with an Engineer
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
