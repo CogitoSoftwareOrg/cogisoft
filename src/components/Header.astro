@@ -8,6 +8,8 @@ const links = [
   { href: "/custom-solution", label: "Custom Solutions" },
   { href: "/partnership", label: "Partnership" },
 ];
+
+const path = Astro.url.pathname;
 ---
 
 <header
@@ -33,7 +35,7 @@ const links = [
         links.map((link) => (
           <a
             href={link.href}
-            class="text-sm font-medium text-base-content/70 hover:text-primary transition-colors"
+            class={`text-sm font-medium text-base-content/70 hover:text-primary transition-colors ${path === link.href ? "text-primary" : ""}`}
           >
             {link.label}
           </a>
@@ -52,7 +54,7 @@ const links = [
         </div>
         <ul
           tabindex="0"
-          class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border border-base-content/10"
+          class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52 border border-base-content/10"
         >
           {
             links.map((link) => (
