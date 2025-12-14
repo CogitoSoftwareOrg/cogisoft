@@ -29,7 +29,7 @@
     try {
       await pb
         .collection("leads")
-        .create({ contact: email, payload: formData });
+        .create({ contact: email, meta: formData, experiment: "agency" });
       formSubmitted = true;
     } catch (error) {
       errorMessage = "Something went wrong. Please try again.";
