@@ -1,3 +1,5 @@
 import PocketBase from "pocketbase";
 
-export const pb = new PocketBase("https://pb.hackseeker.com");
+const PUBLIC_PB_URL = import.meta.env.PUBLIC_PB_URL;
+
+export const pb = new PocketBase(PUBLIC_PB_URL);

@@ -1,4 +1,4 @@
-name: mvp-tmpl
+name: cogisoft-app
 
 services:
   app:
