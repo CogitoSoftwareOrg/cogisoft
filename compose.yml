@@ -9,7 +9,7 @@ services:
       - ENV=${ENV:-production}
       - PUBLIC_POSTHOG_TOKEN=${PUBLIC_POSTHOG_TOKEN:-phc_KBLc1ExggN021vOnZvXf5Ech2Bauk1jwZrrdJuBKUOU}
       - PUBLIC_POSTHOG_URL=${PUBLIC_POSTHOG_URL:-https://eu.i.posthog.com}
-      # - PUBLIC_PB_URL=${PUBLIC_PB_URL:-https://mvp-pb.cogitosoftware.nl}
+      - PUBLIC_PB_URL=${PUBLIC_PB_URL:-https://pb.cogisoft.dev}
       # - MEILI_URL=${MEILI_URL:-https://mvp-meili.cogitosoftware.nl}
       # - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY:-pk-lf-f7e217ed-2076-40cf-8a8c-d3da536fff2c}
       # - LANGFUSE_BASE_URL=${LANGFUSE_BASE_URL:-https://langfuse.quizbee.academy}
