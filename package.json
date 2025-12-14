@@ -6,9 +6,11 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build:gen-types": "npx pocketbase-typegen --db pb/pb_data/data.db --out src/lib/pb/pocketbase-types.ts"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.1",
     "@astrojs/svelte": "^7.2.2",
     "@fontsource/space-mono": "^5.2.9",
     "@lucide/astro": "^0.554.0",

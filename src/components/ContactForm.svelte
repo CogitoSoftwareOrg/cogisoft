@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Send, CheckCircle, Loader2 } from "lucide-svelte";
 
-  import { pb } from "./pb";
+  import { pb } from "../lib/pb";
 
   let isSubmitting = $state(false);
   let formSubmitted = $state(false);
