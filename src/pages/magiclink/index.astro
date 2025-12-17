@@ -18,6 +18,14 @@ import {
   MessageSquare,
   ExternalLink,
   Layout,
+  Compass,
+  PieChart,
+  Video,
+  CreditCard,
+  FileCheck,
+  Target,
+  Layers,
+  Palette,
 } from "@lucide/astro";
 
 import Zero from "../../layouts/Zero.astro";
@@ -33,231 +41,240 @@ import "./styles.css";
 >
   <main class="min-h-screen flex flex-col">
     <!-- Hero -->
-    <section class="pt-16 md:pt-20 pb-16 md:pb-20 overflow-hidden">
-      <div class="container mx-auto px-6 max-w-6xl">
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-          <div class="animate-in">
+    <section class="hero-wow bg-wow overflow-hidden">
+      <div class="container mx-auto px-6 max-w-[1400px]">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="lg:col-span-7 animate-in relative z-10">
             <div
-              class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel text-xs uppercase tracking-widest font-mono mb-8"
+              class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold mb-10"
             >
-              <span class="led-indicator text-secondary"></span>
-              Magic Link Portal
+              <span class="w-2 h-2 rounded-full animate-pulse"></span>
+              Magic Link
             </div>
 
-            <h1
-              class="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight"
-            >
+            <h1 class="hero-wow-title">
               One Link.<br />
-              <span class="text-magic">Everything Your Client Needs.</span>
+              <span class="text-magic">Everything.</span>
             </h1>
 
-            <p
-              class="mt-5 text-lg md:text-xl text-base-content/70 leading-relaxed"
-            >
-              Stop sending scattered links to Drive, Figma, and Trello. Give
-              each client one secure “Magic Link” that houses everything—and
-              lets you update content on the fly.
-            </p>
+            <div class="mt-12 max-w-2xl">
+              <p class="text-xl md:text-2xl leading-tight font-medium">
+                Stop sending scattered links to Drive, Figma, and Trello. Give
+                each client one secure “Magic Link” that houses everything.
+              </p>
 
-            <div id="waitlist" class="mt-8">
-              <WaitlistForm
-                client:load
-                buttonLabel="Join the waitlist"
-                subtext="We'll reach out when early access is ready."
-                placeholder="Email for early access"
-                experiment="magiclink"
-                intent="hero"
-                accented
-              />
-            </div>
+              <div id="waitlist" class="mt-10 hero-wow-form">
+                <WaitlistForm
+                  accented
+                  client:load
+                  buttonLabel="Get Started for Free"
+                  subtext=""
+                  placeholder="Enter your email"
+                  experiment="magiclink"
+                  intent="hero-wow"
+                />
+              </div>
 
-            <div class="mt-8 flex flex-wrap gap-3 text-sm text-base-content/60">
-              <div
-                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
-              >
-                <Shield class="w-4 h-4 text-success" />
-                Secure by default
-              </div>
-              <div
-                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
-              >
-                <KeyRound class="w-4 h-4 text-secondary" />
-                No logins for clients
-              </div>
-              <div
-                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
-              >
-                <RefreshCw class="w-4 h-4 text-primary" />
-                Update without resending
+              <div class="mt-10 flex flex-wrap gap-6">
+                <div
+                  class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider"
+                >
+                  <Shield class="w-4 h-4" />
+                  Secure
+                </div>
+                <div
+                  class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider"
+                >
+                  <KeyRound class="w-4 h-4" />
+                  No Logins
+                </div>
+                <div
+                  class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider"
+                >
+                  <RefreshCw class="w-4 h-4" />
+                  Real-time
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="relative">
-            <!-- Background grid effect -->
-            <div
-              class="absolute inset-0 grid-soft opacity-50 rounded-3xl -z-10"
-            >
-            </div>
-
-            <!-- Main widget card -->
-            <div class="card-float p-6 md:p-8">
-              <!-- Header -->
+          <!-- Gallery Stack -->
+          <div class="lg:col-span-5 relative">
+            <div class="hero-wow-gallery">
+              <!-- Item 1: Strategy & Discovery -->
               <div
-                class="flex items-center justify-between mb-8 pb-6 border-b border-base-content/10"
+                class="gallery-item gallery-item-1 bg-white p-8 flex flex-col justify-between"
               >
-                <div class="flex items-center gap-3">
+                <div>
                   <div
-                    class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center backdrop-blur-sm border border-primary/20 rotate-3 group-hover:rotate-0 transition-transform duration-500"
+                    class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6"
                   >
-                    <Layout class="w-6 h-6 text-primary" />
+                    <Compass class="w-8 h-8 text-primary" />
                   </div>
-                  <div>
-                    <div class="font-bold text-lg leading-tight">
-                      Acme Corp Portal
+                  <h3 class="text-2xl font-bold text-black mb-1">Strategy</h3>
+                  <p
+                    class="text-black/40 text-[10px] uppercase tracking-[0.2em] font-bold mb-6"
+                  >
+                    Phase 01 • Discovery
+                  </p>
+
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-primary/30"></div>
+                      <span class="text-xs font-bold text-black/60"
+                        >Market Research</span
+                      >
                     </div>
-                    <div
-                      class="text-xs text-base-content/50 mt-0.5 flex items-center gap-1.5"
-                    >
-                      <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
-                      Client active
+                    <div class="flex items-center gap-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-primary/30"></div>
+                      <span class="text-xs font-bold text-black/60"
+                        >User Personas</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <div class="w-1.5 h-1.5 rounded-full bg-primary/30"></div>
+                      <span class="text-xs font-bold text-black/60"
+                        >Competitor Audit</span
+                      >
                     </div>
                   </div>
                 </div>
                 <div
-                  class="badge badge-outline badge-sm opacity-50 font-mono text-[10px]"
+                  class="mt-auto pt-6 border-t border-black/5 flex justify-between items-center"
                 >
-                  v2.4
+                  <span class="text-xs font-bold text-black/30"
+                    >UPDATED 1H AGO</span
+                  >
+                  <ExternalLink class="w-5 h-5 text-black/20" />
                 </div>
               </div>
 
-              <div class="space-y-3">
-                <!-- Link 1 -->
-                <a
-                  href="#"
-                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
-                >
-                  <div class="flex items-center gap-4 min-w-0">
-                    <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
-                    >
-                      <FileText class="w-5 h-5 text-primary" />
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-semibold text-sm truncate">
-                        Project Proposal
-                      </div>
-                      <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
-                      >
-                        Google Drive • PDF
-                      </div>
-                    </div>
+              <!-- Item 2: Production & Creative -->
+              <div
+                class="gallery-item gallery-item-2 bg-[#181818] p-8 flex flex-col justify-between border-black"
+              >
+                <div>
+                  <div
+                    class="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center mb-6"
+                  >
+                    <Layout class="w-8 h-8 text-secondary" />
                   </div>
-                  <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-primary transition-colors shrink-0"
-                  />
-                </a>
+                  <h3 class="text-2xl font-bold text-white mb-1">Design</h3>
+                  <p
+                    class="text-white/30 text-[10px] uppercase tracking-[0.2em] font-bold mb-6"
+                  >
+                    Phase 02 • Creative
+                  </p>
 
-                <!-- Link 2 -->
-                <a
-                  href="#"
-                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-secondary/10 hover:border-secondary/20 transition-all duration-300"
-                >
-                  <div class="flex items-center gap-4 min-w-0">
-                    <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
-                    >
-                      <Shield class="w-5 h-5 text-secondary" />
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-semibold text-sm truncate">
-                        Design Assets
-                      </div>
-                      <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-3">
+                      <Palette class="w-3.5 h-3.5 text-secondary/50" />
+                      <span class="text-xs font-bold text-white/50"
+                        >Brand Guidelines</span
                       >
-                        Figma Workspace
-                      </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <Layers class="w-3.5 h-3.5 text-secondary/50" />
+                      <span class="text-xs font-bold text-white/50"
+                        >UI Kit & Components</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <Target class="w-3.5 h-3.5 text-secondary/50" />
+                      <span class="text-xs font-bold text-white/50"
+                        >High-Fi Prototypes</span
+                      >
                     </div>
                   </div>
-                  <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-secondary transition-colors shrink-0"
-                  />
-                </a>
-
-                <!-- Link 3 -->
-                <a
-                  href="#"
-                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300"
+                </div>
+                <div
+                  class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center"
                 >
-                  <div class="flex items-center gap-4 min-w-0">
-                    <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
-                    >
-                      <Trello class="w-5 h-5 text-accent" />
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-semibold text-sm truncate">
-                        Task Board
-                      </div>
-                      <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
-                      >
-                        Trello • Kanban
-                      </div>
-                    </div>
-                  </div>
-                  <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-accent transition-colors shrink-0"
-                  />
-                </a>
-
-                <!-- Link 4 -->
-                <a
-                  href="#"
-                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-success/10 hover:border-success/20 transition-all duration-300"
-                >
-                  <div class="flex items-center gap-4 min-w-0">
-                    <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
-                    >
-                      <MessageSquare class="w-5 h-5 text-success" />
-                    </div>
-                    <div class="min-w-0">
-                      <div class="font-semibold text-sm truncate">
-                        Weekly Reports
-                      </div>
-                      <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
-                      >
-                        Shared Folder
-                      </div>
-                    </div>
-                  </div>
-                  <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-success transition-colors shrink-0"
-                  />
-                </a>
+                  <span class="text-xs font-bold text-white/20"
+                    >LATEST DRAFTS</span
+                  >
+                  <ExternalLink class="w-5 h-5 text-white/20" />
+                </div>
               </div>
 
-              <!-- Footer Hint -->
-              <div class="mt-6 pt-6 border-t border-base-content/5 text-center">
-                <span
-                  class="text-[11px] text-base-content/30 uppercase tracking-[0.2em]"
-                  >Updated 2m ago</span
-                >
+              <!-- Item 3: Main Project Hub -->
+              <div
+                class="gallery-item gallery-item-3 bg-white p-8 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border-none"
+              >
+                <div class="flex items-center gap-4 mb-8">
+                  <div
+                    class="w-14 h-14 rounded-full bg-wow flex items-center justify-center text-black font-bold text-xl"
+                  >
+                    GB
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-black text-lg">
+                      Global Brand Co
+                    </h4>
+                    <p
+                      class="text-xs text-green-500 font-bold flex items-center gap-1"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-green-500"
+                      ></span>
+                      ACTIVE PORTAL
+                    </p>
+                  </div>
+                </div>
+                <div class="space-y-3">
+                  <div
+                    class="h-12 w-full rounded-xl bg-gray-50 flex items-center px-4 justify-between"
+                  >
+                    <div class="flex items-center gap-3">
+                      <Trello class="w-4 h-4 text-accent" />
+                      <span class="text-sm font-bold text-black/70"
+                        >Project Roadmap</span
+                      >
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-accent"></div>
+                  </div>
+                  <div
+                    class="h-12 w-full rounded-xl bg-gray-50 flex items-center px-4 justify-between"
+                  >
+                    <div class="flex items-center gap-3">
+                      <PieChart class="w-4 h-4 text-success" />
+                      <span class="text-sm font-bold text-black/70"
+                        >Ads Performance</span
+                      >
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-success"></div>
+                  </div>
+                  <div
+                    class="h-12 w-full rounded-xl bg-gray-50 flex items-center px-4 justify-between"
+                  >
+                    <div class="flex items-center gap-3">
+                      <Video class="w-4 h-4 text-primary" />
+                      <span class="text-sm font-bold text-black/70"
+                        >Weekly Loom Update</span
+                      >
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-primary"></div>
+                  </div>
+                  <div
+                    class="h-12 w-full rounded-xl bg-gray-50 flex items-center px-4 justify-between"
+                  >
+                    <div class="flex items-center gap-3">
+                      <CreditCard class="w-4 h-4 text-warning" />
+                      <span class="text-sm font-bold text-black/70"
+                        >Invoices & Billing</span
+                      >
+                    </div>
+                    <div class="w-2 h-2 rounded-full bg-warning"></div>
+                  </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-black/5 text-center">
+                  <div
+                    class="btn btn-sm btn-ghost no-animation text-[10px] font-bold opacity-30"
+                  >
+                    ONE HUB • ALL SLICES
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <!-- Decorative blur effects -->
-            <div
-              class="absolute -top-12 -right-12 w-48 h-48 bg-secondary/20 rounded-full blur-3xl -z-20"
-            >
-            </div>
-            <div
-              class="absolute -bottom-12 -left-12 w-56 h-56 bg-primary/15 rounded-full blur-3xl -z-20"
-            >
             </div>
           </div>
         </div>
@@ -277,35 +294,54 @@ import "./styles.css";
         </div>
 
         <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="card-float">
-            <div class="flex items-center gap-3 mb-4">
-              <SearchX class="w-5 h-5 text-error" />
-              <div class="font-semibold">“Can you resend that?”</div>
+          <div class="card-float group">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <SearchX class="w-5 h-5 text-error" />
+                <div class="font-semibold">“Can you resend?”</div>
+              </div>
+              <span
+                class="text-[10px] font-bold text-error/40 uppercase bg-error/5 px-2 py-1 rounded"
+                >High Friction</span
+              >
             </div>
-            <p class="text-base-content/70 leading-relaxed">
-              You waste time acting as a file retrieval service.
+            <p class="text-base-content/70 text-sm leading-relaxed">
+              You waste 20% of your week acting as a file retrieval service
+              instead of doing billable work.
             </p>
           </div>
 
-          <div class="card-float">
-            <div class="flex items-center gap-3 mb-4">
-              <FileWarning class="w-5 h-5 text-warning" />
-              <div class="font-semibold">Version control hell</div>
+          <div class="card-float group">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <FileWarning class="w-5 h-5 text-warning" />
+                <div class="font-semibold">Version Hell</div>
+              </div>
+              <span
+                class="text-[10px] font-bold text-warning/40 uppercase bg-warning/5 px-2 py-1 rounded"
+                >Risk Factor</span
+              >
             </div>
-            <p class="text-base-content/70 leading-relaxed">
-              “Is this the final_final_v2.pdf?” Old drafts cause confusion and
-              rework.
+            <p class="text-base-content/70 text-sm leading-relaxed">
+              “Is this final_v2.pdf?” Old drafts cause confusion, rework, and
+              client frustration.
             </p>
           </div>
 
-          <div class="card-float">
-            <div class="flex items-center gap-3 mb-4">
-              <Link2Off class="w-5 h-5 text-error" />
-              <div class="font-semibold">Link spaghetti</div>
+          <div class="card-float group">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <Link2Off class="w-5 h-5 text-error" />
+                <div class="font-semibold">Link Spaghetti</div>
+              </div>
+              <span
+                class="text-[10px] font-bold text-error/40 uppercase bg-error/5 px-2 py-1 rounded"
+                >Chaos</span
+              >
             </div>
-            <p class="text-base-content/70 leading-relaxed">
-              A Drive link here, a Figma link there, a Trello board somewhere
-              else. Your client is lost before the project even starts.
+            <p class="text-base-content/70 text-sm leading-relaxed">
+              Drive, Figma, Trello, Slack... your client is lost before the
+              project even starts.
             </p>
           </div>
         </div>
@@ -334,11 +370,18 @@ import "./styles.css";
               >
                 <LayoutGrid class="w-5 h-5 text-primary" />
               </div>
-              <div>
-                <div class="font-semibold">A curated hub</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">A curated hub</div>
+                  <span
+                    class="text-[10px] font-bold text-primary/50 uppercase tracking-widest"
+                    >Organized</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
                   Instead of a messy email chain, give them one polished link
-                  that houses their files, links, and reports.
+                  that houses their files, links, and reports in a beautiful
+                  dashboard.
                 </p>
               </div>
             </div>
@@ -351,11 +394,18 @@ import "./styles.css";
               >
                 <RefreshCw class="w-5 h-5 text-secondary" />
               </div>
-              <div>
-                <div class="font-semibold">Always up-to-date</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Always up-to-date</div>
+                  <span
+                    class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest"
+                    >Live Sync</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
                   Change the files, not the link. Update your work on the fly
-                  without resending an email.
+                  without resending a single email. Your client always sees the
+                  latest.
                 </p>
               </div>
             </div>
@@ -368,9 +418,15 @@ import "./styles.css";
               >
                 <KeyRound class="w-5 h-5 text-accent" />
               </div>
-              <div>
-                <div class="font-semibold">Barrier-free access</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Barrier-free access</div>
+                  <span
+                    class="text-[10px] font-bold text-accent/50 uppercase tracking-widest"
+                    >Seamless</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
                   No sign-ups. No “Forgot Password” drama. Your clients receive
                   a unique, secure link to get instantly where they need to be.
                 </p>
@@ -385,11 +441,17 @@ import "./styles.css";
               >
                 <Shield class="w-5 h-5 text-success" />
               </div>
-              <div>
-                <div class="font-semibold">Total control</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
-                  Need to pause access? Revoke the link with a single click from
-                  your dashboard.
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Total control</div>
+                  <span
+                    class="text-[10px] font-bold text-success/50 uppercase tracking-widest"
+                    >Secure</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
+                  Need to pause access? Revoke the link with a single click. Set
+                  expiry dates or password protection for extra sensitive data.
                 </p>
               </div>
             </div>
@@ -500,10 +562,17 @@ import "./styles.css";
               >
                 <Paintbrush class="w-5 h-5 text-primary" />
               </div>
-              <div>
-                <div class="font-semibold">Your logo & colors</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
-                  Custom header, custom background, custom favicon.
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Your logo & colors</div>
+                  <span
+                    class="text-[10px] font-bold text-primary/50 uppercase tracking-widest"
+                    >Brandable</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
+                  Custom header, custom background, and custom favicon. Your
+                  clients stay within your brand ecosystem.
                 </p>
               </div>
             </div>
@@ -516,11 +585,17 @@ import "./styles.css";
               >
                 <BadgeCheck class="w-5 h-5 text-secondary" />
               </div>
-              <div>
-                <div class="font-semibold">No “Powered By”</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
-                  We remove all references to our software on your client’s
-                  page.
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">No “Powered By”</div>
+                  <span
+                    class="text-[10px] font-bold text-secondary/50 uppercase tracking-widest"
+                    >100% Private</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
+                  We remove all references to our software. To your clients,
+                  this is your proprietary custom-built portal.
                 </p>
               </div>
             </div>
@@ -533,11 +608,17 @@ import "./styles.css";
               >
                 <Globe class="w-5 h-5 text-accent" />
               </div>
-              <div>
-                <div class="font-semibold">Your custom URL</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
-                  Connect your own domain (e.g., clients.youragency.com) or use
-                  clean, unbranded links.
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Your custom URL</div>
+                  <span
+                    class="text-[10px] font-bold text-accent/50 uppercase tracking-widest"
+                    >Domains</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
+                  Connect your own domain (e.g., portal.youragency.com) for a
+                  truly professional white-label experience.
                 </p>
               </div>
             </div>
@@ -550,10 +631,17 @@ import "./styles.css";
               >
                 <Shield class="w-5 h-5 text-success" />
               </div>
-              <div>
-                <div class="font-semibold">Hidden from Google</div>
-                <p class="mt-2 text-base-content/70 leading-relaxed">
-                  Your clients’ data will never show up in search results.
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold">Hidden from Google</div>
+                  <span
+                    class="text-[10px] font-bold text-success/50 uppercase tracking-widest"
+                    >Stealth</span
+                  >
+                </div>
+                <p class="mt-2 text-base-content/70 text-sm leading-relaxed">
+                  Every portal is automatically set to no-index. Your clients’
+                  data and links stay private and invisible.
                 </p>
               </div>
             </div>

@@ -92,14 +92,9 @@
 }
 
 /* === TIPOGRAPHY === */
-html {
-  overflow-x: hidden;
-}
-
 body {
   font-family: var(--font-body);
   background-color: var(--color-base-100);
-  overflow-x: hidden;
   /* Плавный градиент на фоне для глубины */
   background-image: radial-gradient(
       circle at 15% 0%,
@@ -126,6 +121,72 @@ h6 {
 }
 
 /* === MAGIC UTILITIES === */
+
+/* WOW HERO UTILITIES */
+@utility hero-wow {
+  @apply min-h-[90vh] flex items-center relative py-12 md:py-24;
+}
+
+@utility hero-wow-title {
+  @apply text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] font-bold leading-[0.9] tracking-tighter;
+}
+
+@utility hero-wow-gallery {
+  @apply relative w-full h-full min-h-[400px] md:min-h-[600px] flex items-center justify-center;
+}
+
+@utility bg-wow {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-15px) rotate(calc(var(--rot, 0deg) + 1deg));
+  }
+}
+
+@utility gallery-item {
+  @apply absolute w-[80%] aspect-4/5 md:aspect-3/4 rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-700 border-4 border-black/5;
+  animation: float 6s ease-in-out infinite;
+}
+
+@utility gallery-item-1 {
+  @apply -rotate-6 translate-x-[-10%] translate-y-[-5%] z-10;
+  --rot: -6deg;
+  animation-delay: 0s;
+}
+
+@utility gallery-item-2 {
+  @apply rotate-[4deg] translate-x-[15%] translate-y-[10%] z-20;
+  --rot: 4deg;
+  animation-delay: -2s;
+}
+
+@utility gallery-item-3 {
+  @apply rotate-[-2deg] translate-x-[-5%] translate-y-[25%] z-30;
+  --rot: -2deg;
+  animation-delay: -4s;
+}
+
+.gallery-item:hover {
+  @apply z-40 scale-105 rotate-0 translate-x-0 translate-y-0 shadow-[0_0_80px_rgba(0,0,0,0.2)];
+}
+
+.gallery-item:hover {
+  @apply z-40 scale-105 rotate-0 translate-x-0 translate-y-0 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)];
+}
 
 /* 1. Магический текст (Градиент) */
 @utility text-magic {
