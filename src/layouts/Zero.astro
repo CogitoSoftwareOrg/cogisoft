@@ -1,0 +1,42 @@
+---
+import Footer from "../components/Footer.astro";
+import Background from "../components/Background.astro";
+import MetaPixelCode from "../components/MetaPixelCode.astro";
+import ThemeController from "../components/ThemeController.svelte";
+import Posthog from "../components/Posthog.astro";
+
+interface Props {
+  path?: string;
+  title?: string;
+}
+
+const { path = "/", title = "Cogito Software" }: Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <script is:inline>
+      const theme = localStorage.getItem("theme") || "LIGHT";
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
+
+    <Posthog />
+    <MetaPixelCode />
+  </head>
+  <body class="min-h-screen bg-base-100 text-base-content antialiased">
+    <Background />
+
+    <header class="flex items-center py-2 px-8 justify-end w-full">
+      <ThemeController client:load />
+    </header>
+    <slot />
+    <Footer />
+  </body>
+</html>

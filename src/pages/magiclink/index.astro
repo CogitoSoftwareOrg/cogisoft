@@ -1,13 +1,601 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import {
+  Shield,
+  Link2,
+  RefreshCw,
+  KeyRound,
+  LayoutGrid,
+  Eye,
+  Zap,
+  BadgeCheck,
+  Paintbrush,
+  Globe,
+  SearchX,
+  FileWarning,
+  Link2Off,
+  FileText,
+  Trello,
+  MessageSquare,
+  ExternalLink,
+  Layout,
+} from "@lucide/astro";
+
+import Zero from "../../layouts/Zero.astro";
+import WaitlistForm from "../../components/WaitlistForm.svelte";
+
+import "./styles.css";
 ---
 
-<Layout path="/magiclink" title="Magic Link | Cogito Software">
-  <main class="pt-32 pb-20 min-h-screen flex flex-col">
-    <div class="container mx-auto px-6 max-w-6xl grow">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-        Magic Link
-      </h1>
-    </div>
+<Zero path="/magiclink" title="Magic Link | Cogito Software">
+  <main class="min-h-screen flex flex-col">
+    <!-- Hero -->
+    <section class="pt-16 md:pt-20 pb-16 md:pb-20">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          <div class="animate-in">
+            <div
+              class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel text-xs uppercase tracking-widest font-mono mb-8"
+            >
+              <span class="led-indicator text-secondary"></span>
+              Magic Link Portal
+            </div>
+
+            <h1
+              class="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight"
+            >
+              One Link.<br />
+              <span class="text-magic">Everything Your Client Needs.</span>
+            </h1>
+
+            <p
+              class="mt-5 text-lg md:text-xl text-base-content/70 leading-relaxed"
+            >
+              Stop sending scattered links to Drive, Figma, and Trello. Give
+              each client one secure “Magic Link” that houses everything—and
+              lets you update content on the fly.
+            </p>
+
+            <div id="waitlist" class="mt-8">
+              <WaitlistForm
+                client:load
+                buttonLabel="Join the waitlist"
+                subtext="We'll reach out when early access is ready."
+                placeholder="Email for early access"
+                experiment="magiclink"
+                intent="hero"
+                accented
+              />
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-3 text-sm text-base-content/60">
+              <div
+                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
+              >
+                <Shield class="w-4 h-4 text-success" />
+                Secure by default
+              </div>
+              <div
+                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
+              >
+                <KeyRound class="w-4 h-4 text-secondary" />
+                No logins for clients
+              </div>
+              <div
+                class="glass-panel rounded-full px-4 py-2 flex items-center gap-2"
+              >
+                <RefreshCw class="w-4 h-4 text-primary" />
+                Update without resending
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <!-- Background grid effect -->
+            <div
+              class="absolute inset-0 grid-soft opacity-50 rounded-3xl -z-10"
+            >
+            </div>
+
+            <!-- Main widget card -->
+            <div class="card-float p-6 md:p-8">
+              <!-- Header -->
+              <div
+                class="flex items-center justify-between mb-8 pb-6 border-b border-base-content/10"
+              >
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center backdrop-blur-sm border border-primary/20 rotate-3 group-hover:rotate-0 transition-transform duration-500"
+                  >
+                    <Layout class="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <div class="font-bold text-lg leading-tight">
+                      Acme Corp Portal
+                    </div>
+                    <div
+                      class="text-xs text-base-content/50 mt-0.5 flex items-center gap-1.5"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+                      Client active
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="badge badge-outline badge-sm opacity-50 font-mono text-[10px]"
+                >
+                  v2.4
+                </div>
+              </div>
+
+              <!-- Links List -->
+              <div class="space-y-3">
+                <!-- Link 1 -->
+                <a
+                  href="#"
+                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                    >
+                      <FileText class="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div class="font-semibold text-sm">Project Proposal</div>
+                      <div
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                      >
+                        Google Drive • PDF
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-primary transition-colors"
+                  />
+                </a>
+
+                <!-- Link 2 -->
+                <a
+                  href="#"
+                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-secondary/10 hover:border-secondary/20 transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                    >
+                      <Shield class="w-5 h-5 text-secondary" />
+                    </div>
+                    <div>
+                      <div class="font-semibold text-sm">Design Assets</div>
+                      <div
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                      >
+                        Figma Workspace
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-secondary transition-colors"
+                  />
+                </a>
+
+                <!-- Link 3 -->
+                <a
+                  href="#"
+                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                    >
+                      <Trello class="w-5 h-5 text-accent" />
+                    </div>
+                    <div>
+                      <div class="font-semibold text-sm">Task Board</div>
+                      <div
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                      >
+                        Trello • Kanban
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-accent transition-colors"
+                  />
+                </a>
+
+                <!-- Link 4 -->
+                <a
+                  href="#"
+                  class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-success/10 hover:border-success/20 transition-all duration-300"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                    >
+                      <MessageSquare class="w-5 h-5 text-success" />
+                    </div>
+                    <div>
+                      <div class="font-semibold text-sm">Weekly Reports</div>
+                      <div
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                      >
+                        Shared Folder
+                      </div>
+                    </div>
+                  </div>
+                  <ExternalLink
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-success transition-colors"
+                  />
+                </a>
+              </div>
+
+              <!-- Footer Hint -->
+              <div class="mt-6 pt-6 border-t border-base-content/5 text-center">
+                <span
+                  class="text-[11px] text-base-content/30 uppercase tracking-[0.2em]"
+                  >Updated 2m ago</span
+                >
+              </div>
+            </div>
+
+            <!-- Decorative blur effects -->
+            <div
+              class="absolute -top-12 -right-12 w-48 h-48 bg-secondary/20 rounded-full blur-3xl -z-20"
+            >
+            </div>
+            <div
+              class="absolute -bottom-12 -left-12 w-56 h-56 bg-primary/15 rounded-full blur-3xl -z-20"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="py-16 md:py-20">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+            Stop playing “Find the Link” with your clients.
+          </h2>
+          <p class="mt-4 text-lg text-base-content/70 leading-relaxed">
+            Every time you send a loose email, you create friction.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card-float">
+            <div class="flex items-center gap-3 mb-4">
+              <SearchX class="w-5 h-5 text-error" />
+              <div class="font-semibold">“Can you resend that?”</div>
+            </div>
+            <p class="text-base-content/70 leading-relaxed">
+              You waste time acting as a file retrieval service.
+            </p>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-center gap-3 mb-4">
+              <FileWarning class="w-5 h-5 text-warning" />
+              <div class="font-semibold">Version control hell</div>
+            </div>
+            <p class="text-base-content/70 leading-relaxed">
+              “Is this the final_final_v2.pdf?” Old drafts cause confusion and
+              rework.
+            </p>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-center gap-3 mb-4">
+              <Link2Off class="w-5 h-5 text-error" />
+              <div class="font-semibold">Link spaghetti</div>
+            </div>
+            <p class="text-base-content/70 leading-relaxed">
+              A Drive link here, a Figma link there, a Trello board somewhere
+              else. Your client is lost before the project even starts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="py-16 md:py-20">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+            Simplicity. Security. Elegance.
+          </h2>
+          <p class="mt-4 text-lg text-base-content/70 leading-relaxed">
+            We stripped away the clunky software, the passwords, and the
+            confusion. What’s left is a secure, beautifully simple experience
+            for your client.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0"
+              >
+                <LayoutGrid class="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div class="font-semibold">A curated hub</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Instead of a messy email chain, give them one polished link
+                  that houses their files, links, and reports.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-secondary/15 flex items-center justify-center shrink-0"
+              >
+                <RefreshCw class="w-5 h-5 text-secondary" />
+              </div>
+              <div>
+                <div class="font-semibold">Always up-to-date</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Change the files, not the link. Update your work on the fly
+                  without resending an email.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-accent/15 flex items-center justify-center shrink-0"
+              >
+                <KeyRound class="w-5 h-5 text-accent" />
+              </div>
+              <div>
+                <div class="font-semibold">Barrier-free access</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  No sign-ups. No “Forgot Password” drama. Your clients receive
+                  a unique, secure link to get instantly where they need to be.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-success/15 flex items-center justify-center shrink-0"
+              >
+                <Shield class="w-5 h-5 text-success" />
+              </div>
+              <div>
+                <div class="font-semibold">Total control</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Need to pause access? Revoke the link with a single click from
+                  your dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin -->
+    <section class="py-16 md:py-20">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div class="max-w-xl">
+            <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+              Manage 50 clients as easily as 1.
+            </h2>
+            <p class="mt-4 text-lg text-base-content/70 leading-relaxed">
+              Your dedicated Command Center keeps your agency organized. No more
+              spreadsheet chaos.
+            </p>
+          </div>
+
+          <div class="card-float">
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-base-100/40 flex items-center justify-center shrink-0 border border-white/10"
+                >
+                  <LayoutGrid class="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <div class="font-semibold">Bird’s eye view</div>
+                  <div class="mt-1 text-base-content/70">
+                    See all your client portals in one clean list.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-base-100/40 flex items-center justify-center shrink-0 border border-white/10"
+                >
+                  <Link2 class="w-5 h-5 text-secondary" />
+                </div>
+                <div>
+                  <div class="font-semibold">Flexible access</div>
+                  <div class="mt-1 text-base-content/70">
+                    Generate a private link for a single client, a shared link
+                    for a team, or a universal link for everyone.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-base-100/40 flex items-center justify-center shrink-0 border border-white/10"
+                >
+                  <Eye class="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <div class="font-semibold">View tracking</div>
+                  <div class="mt-1 text-base-content/70">
+                    Did they actually read the proposal? See the moment they
+                    open the link so you know when to follow up.
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-10 h-10 rounded-2xl bg-base-100/40 flex items-center justify-center shrink-0 border border-white/10"
+                >
+                  <Zap class="w-5 h-5 text-success" />
+                </div>
+                <div>
+                  <div class="font-semibold">One-click updates</div>
+                  <div class="mt-1 text-base-content/70">
+                    Add reports or files to any portal without leaving your
+                    dashboard.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- White-label -->
+    <section class="py-16 md:py-20">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+            We stay invisible. You take the credit.
+          </h2>
+          <p class="mt-4 text-lg text-base-content/70 leading-relaxed">
+            We are a true white-label platform. That means when your client
+            opens their portal, they see <span class="font-semibold">YOU</span>,
+            not us.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0"
+              >
+                <Paintbrush class="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <div class="font-semibold">Your logo & colors</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Custom header, custom background, custom favicon.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-secondary/15 flex items-center justify-center shrink-0"
+              >
+                <BadgeCheck class="w-5 h-5 text-secondary" />
+              </div>
+              <div>
+                <div class="font-semibold">No “Powered By”</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  We remove all references to our software on your client’s
+                  page.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-accent/15 flex items-center justify-center shrink-0"
+              >
+                <Globe class="w-5 h-5 text-accent" />
+              </div>
+              <div>
+                <div class="font-semibold">Your custom URL</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Connect your own domain (e.g., clients.youragency.com) or use
+                  clean, unbranded links.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-float">
+            <div class="flex items-start gap-4">
+              <div
+                class="w-11 h-11 rounded-2xl bg-success/15 flex items-center justify-center shrink-0"
+              >
+                <Shield class="w-5 h-5 text-success" />
+              </div>
+              <div>
+                <div class="font-semibold">Hidden from Google</div>
+                <p class="mt-2 text-base-content/70 leading-relaxed">
+                  Your clients’ data will never show up in search results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="pb-20 md:pb-28">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="card-float overflow-hidden relative">
+          <div class="absolute inset-0 grid-soft opacity-70"></div>
+          <div class="relative">
+            <div
+              class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10"
+            >
+              <div class="max-w-2xl">
+                <h3 class="text-2xl md:text-3xl font-bold">
+                  Get Lifetime Access for <span class="text-magic">$59</span>
+                </h3>
+                <p class="mt-3 text-base-content/70 leading-relaxed">
+                  One-time payment. Use it forever. Join the waitlist and we’ll
+                  send you the launch link first.
+                </p>
+                <div
+                  class="mt-5 flex flex-wrap gap-3 text-sm text-base-content/60"
+                >
+                  <div class="glass-panel rounded-full px-4 py-2">
+                    White-label by default
+                  </div>
+                  <div class="glass-panel rounded-full px-4 py-2">
+                    Revocable access
+                  </div>
+                  <div class="glass-panel rounded-full px-4 py-2">
+                    Built for agencies
+                  </div>
+                </div>
+              </div>
+              <div class="w-full lg:max-w-md">
+                <WaitlistForm
+                  client:load
+                  experiment="magiclink"
+                  intent="lifetime"
+                  buttonLabel="Lifetime for $59"
+                  subtext="No spam. Just launch + early access details."
+                  placeholder="Email for early access"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-</Layout>
+</Zero>
