@@ -31,7 +31,7 @@ const { path = "/", title = "Cogito Software" }: Props = Astro.props;
     <Posthog />
     <MetaPixelCode />
   </head>
-  <body>
+  <body class="min-h-screen bg-base-100 text-base-content antialiased">
     <Background />
     <Header path={path} />
     <slot />

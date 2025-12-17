@@ -2,31 +2,49 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="py-12 border-t border-base-content/10 bg-base-100">
-  <div
-    class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6"
-  >
-    <div class="text-center md:text-left">
-      <div class="font-bold text-xl mb-2">Cogito Software</div>
-      <p class="text-sm text-base-content/60">
-        Building the future with AI & Modern Web.
-      </p>
-    </div>
+<footer class="mt-24 border-t-2 border-base-content/10">
+  <div class="container mx-auto px-4 py-12">
+    <div class="panel-industrial card-riveted">
+      <span class="rivet-accent top-3 left-3"></span>
+      <span class="rivet-accent top-3 right-3"></span>
+      <span class="rivet-accent bottom-3 left-3"></span>
+      <span class="rivet-accent bottom-3 right-3"></span>
 
-    <div class="flex gap-6 text-sm text-base-content/60">
-      <a href="/privacy-policy" class="hover:text-primary transition-colors"
-        >Privacy Policy</a
+      <div
+        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8"
       >
-      <a
-        href="/terms-and-conditions"
-        class="hover:text-primary transition-colors">Terms of Service</a
-      >
-      <a href="/contact" class="hover:text-primary transition-colors">Contact</a
-      >
-    </div>
+        <div>
+          <div class="text-display text-base-content">Cogito Software</div>
+          <p class="text-sm text-base-content/60 mt-2 max-w-md">
+            We don't build useless software: local-first systems, repairable
+            workflows, modular architecture.
+          </p>
+        </div>
 
-    <div class="text-sm text-base-content/40 font-mono">
-      © {currentYear} Cogito Software.
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-3 text-xs uppercase tracking-widest"
+        >
+          <a
+            href="/privacy-policy"
+            class="text-base-content/60 hover:text-primary transition-colors"
+            >Privacy Policy</a
+          >
+          <a
+            href="/terms-and-conditions"
+            class="text-base-content/60 hover:text-primary transition-colors"
+            >Terms of Service</a
+          >
+          <a
+            href="/contact"
+            class="text-base-content/60 hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+
+        <div class="text-xs text-base-content/40 font-mono text-display">
+          © {currentYear} Cogito Software. All systems nominal.
+        </div>
+      </div>
     </div>
   </div>
 </footer>

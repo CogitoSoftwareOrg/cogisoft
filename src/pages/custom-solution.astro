@@ -8,8 +8,6 @@ import { Cpu, Database, Network } from "@lucide/astro";
     <section
       class="grow flex items-center justify-center relative overflow-hidden py-20"
     >
-      <div class="absolute inset-0 bg-grid-pattern z-0"></div>
-
       <div class="container mx-auto px-4 z-10 relative">
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-16">
@@ -26,16 +24,22 @@ import { Cpu, Database, Network } from "@lucide/astro";
               class="text-xl text-base-content/70 max-w-3xl mx-auto font-light"
             >
               For challenges that go beyond standard web apps. We architect and
-              build custom solutions tailored to your specific infrastructure
-              and data needs.
+              build self-hostable systems tailored to your infrastructure, data,
+              and operational constraints.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <!-- Card 1 -->
-            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+            <div
+              class="card-riveted p-8 hover:border-accent/50 transition-colors"
+            >
+              <span class="rivet-accent top-3 left-3"></span>
+              <span class="rivet-accent top-3 right-3"></span>
+              <span class="rivet-accent bottom-3 left-3"></span>
+              <span class="rivet-accent bottom-3 right-3"></span>
               <div
-                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
               >
                 <Cpu class="w-6 h-6" />
               </div>
@@ -48,9 +52,15 @@ import { Cpu, Database, Network } from "@lucide/astro";
             </div>
 
             <!-- Card 2 -->
-            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+            <div
+              class="card-riveted p-8 hover:border-accent/50 transition-colors"
+            >
+              <span class="rivet-accent top-3 left-3"></span>
+              <span class="rivet-accent top-3 right-3"></span>
+              <span class="rivet-accent bottom-3 left-3"></span>
+              <span class="rivet-accent bottom-3 right-3"></span>
               <div
-                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
               >
                 <Database class="w-6 h-6" />
               </div>
@@ -63,9 +73,15 @@ import { Cpu, Database, Network } from "@lucide/astro";
             </div>
 
             <!-- Card 3 -->
-            <div class="glass-card p-8 hover:border-accent/50 transition-all">
+            <div
+              class="card-riveted p-8 hover:border-accent/50 transition-colors"
+            >
+              <span class="rivet-accent top-3 left-3"></span>
+              <span class="rivet-accent top-3 right-3"></span>
+              <span class="rivet-accent bottom-3 left-3"></span>
+              <span class="rivet-accent bottom-3 right-3"></span>
               <div
-                class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center text-accent mb-6"
+                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
               >
                 <Network class="w-6 h-6" />
               </div>

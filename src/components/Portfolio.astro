@@ -63,8 +63,8 @@ const projects = [
             rel="noopener noreferrer"
             class="group"
           >
-            <div class="glass-card h-full relative overflow-hidden hover:border-primary/30">
-              <div class="h-48 overflow-hidden relative border-b border-base-content/10">
+            <div class="card-terminal h-full relative overflow-hidden hover:border-primary/30">
+              <div class="h-48 overflow-hidden relative border-b-2 border-base-content/10">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -77,22 +77,25 @@ const projects = [
                 </div>
               </div>
 
-              <div class="absolute bottom-4 left-4 bg-base-100/90 backdrop-blur px-3 py-1 rounded-full text-xs font-mono">
-                View Live
-              </div>
-              <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p class="text-base-content/70 mb-6 text-sm leading-relaxed">
-                {project.description}
-              </p>
+              <div class="p-6">
+                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-base-content/50 mb-3">
+                  <span class="led-indicator text-success" />
+                  Live deployment
+                </div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p class="text-base-content/70 mb-6 text-sm leading-relaxed">
+                  {project.description}
+                </p>
 
-              <div class="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag) => (
-                  <span class="px-3 py-1 rounded-md bg-base-content/5 text-xs font-mono border border-base-content/10">
-                    {tag}
-                  </span>
-                ))}
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  {project.tags.map((tag) => (
+                    <span class="px-3 py-1 rounded-none bg-base-content/5 text-[11px] font-mono border-2 border-base-content/10 uppercase tracking-widest">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </a>

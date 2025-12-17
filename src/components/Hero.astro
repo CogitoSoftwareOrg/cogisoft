@@ -37,9 +37,10 @@ import { Image } from "astro:assets";
   <div class="container mx-auto px-4 z-10 relative">
     <div class="max-w-4xl mx-auto text-center">
       <div
-        class="inline-block mb-6 px-4 py-1.5 rounded-full glass text-sm font-mono text-primary animate-bounce"
+        class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border-2 border-base-content/10 bg-base-200/40 text-xs uppercase tracking-widest font-mono text-primary"
       >
-        🚀 Fast-Track Your MVP
+        <span class="led-indicator text-success"></span>
+        Rapid build. Full ownership.
       </div>
 
       <h1
@@ -56,14 +57,8 @@ import { Image } from "astro:assets";
       <p
         class="text-xl md:text-2xl text-base-content/70 mb-10 max-w-3xl mx-auto font-light"
       >
-        Fullstack Prototype for <span class="line-through text-base-content/40"
-          >$2000</span
-        >
-        <span class="font-bold text-primary">$999</span>
-        <span
-          class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full ml-2"
-          >Early Adopters</span
-        >. Validate your hypothesis with a production-ready build.
+        A production-grade prototype you can self-host and extend. No lock-in,
+        no subscriptions, no vague deliverables—just a working system you own.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -87,19 +82,19 @@ import { Image } from "astro:assets";
       >
         <div>
           <div class="text-3xl font-bold text-primary">7 Days</div>
-          <div class="text-sm text-base-content/60">Delivery Time</div>
+          <div class="text-sm text-base-content/60">Delivery window</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-primary">$999</div>
-          <div class="text-sm text-base-content/60">Early Adopters</div>
+          <div class="text-3xl font-bold text-primary">One-off</div>
+          <div class="text-sm text-base-content/60">No subscriptions</div>
         </div>
         <div>
           <div class="text-3xl font-bold text-primary">100%</div>
           <div class="text-sm text-base-content/60">Code Ownership</div>
         </div>
         <div>
-          <div class="text-3xl font-bold text-primary">Modern</div>
-          <div class="text-sm text-base-content/60">Tech Stack</div>
+          <div class="text-3xl font-bold text-primary">Local</div>
+          <div class="text-sm text-base-content/60">Deploy anywhere</div>
         </div>
       </div>
     </div>

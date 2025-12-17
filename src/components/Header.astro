@@ -18,20 +18,25 @@ const { path }: Props = Astro.props;
 ---
 
 <header
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-white/5 bg-base-100/70 backdrop-blur-md"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b-2 border-base-content/10 bg-base-100/70 backdrop-blur-md"
 >
   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
     <!-- Logo -->
     <a
       href="/"
-      class="text-xl font-bold tracking-tighter flex items-center gap-2 hover:opacity-80 transition-opacity"
+      class="text-xl font-bold tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity"
     >
       <div
-        class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-content font-mono text-sm"
+        class="size-9 bg-base-200 border border-base-content/15 flex items-center justify-center text-primary font-mono text-lg"
       >
         CS
       </div>
-      <span class="hidden sm:inline">Cogito Software</span>
+      <div class="hidden sm:flex flex-col leading-none">
+        <span class="text-display text-base-content">Cogito Software</span>
+        <span class="text-[10px] text-base-content/50 tracking-widest uppercase"
+          >Own your tech</span
+        >
+      </div>
     </a>
 
     <!-- Desktop Nav -->
@@ -40,7 +45,7 @@ const { path }: Props = Astro.props;
         links.map((link) => (
           <a
             href={link.href}
-            class={`text-sm font-medium text-base-content/70 hover:text-primary transition-colors ${path === link.href ? "text-primary" : ""}`}
+            class={`text-xs font-medium uppercase tracking-widest text-base-content/70 hover:text-primary transition-colors ${path === link.href ? "text-primary" : ""}`}
           >
             {link.label}
           </a>
@@ -59,7 +64,7 @@ const { path }: Props = Astro.props;
         </div>
         <ul
           tabindex="0"
-          class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-base-100 rounded-box w-52 border border-base-content/10"
+          class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow-none bg-base-100 w-52 border-2 border-base-content/10"
         >
           {
             links.map((link) => (

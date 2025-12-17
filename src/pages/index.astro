@@ -15,23 +15,6 @@ import Portfolio from "../components/Portfolio.astro";
 
 <Layout path="/" title="Cogito Software | No Useless Software">
   <main class="relative min-h-screen flex flex-col overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-base-100 z-0">
-      <div
-        class="absolute top-0 right-0 w-2/3 h-full bg-linear-to-l from-primary/5 to-transparent opacity-60"
-      >
-      </div>
-      <div
-        class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-t from-secondary/5 to-transparent opacity-40"
-      >
-      </div>
-      <div
-        class="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"
-        style="animation-duration: 8s;"
-      >
-      </div>
-    </div>
-
     <!-- Hero Section -->
     <section class="relative z-10 pt-32 pb-20 lg:pt-48 lg:pb-32">
       <div class="container mx-auto px-6">
@@ -39,26 +22,19 @@ import Portfolio from "../components/Portfolio.astro";
           <!-- Left Content -->
           <div class="lg:w-1/2 text-left">
             <div
-              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-200/50 border border-base-content/10 text-sm font-medium mb-8 backdrop-blur-sm"
+              class="inline-flex items-center gap-3 px-4 py-2 border-2 border-base-content/10 bg-base-200/35 text-xs uppercase tracking-widest font-mono mb-8 backdrop-blur-sm"
             >
-              <span class="relative flex h-2 w-2">
-                <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"
-                ></span>
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 bg-success"
-                ></span>
-              </span>
+              <span class="led-indicator text-success"></span>
               Available for new projects
             </div>
 
             <h1
               class="text-5xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-tight"
             >
-              We don't build <br />
+              We build <br />
               <span
                 class="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary"
-                >useless software.</span
+                >useful apps.</span
               >
             </h1>
 
@@ -70,19 +46,34 @@ import Portfolio from "../components/Portfolio.astro";
               freedom.
             </p>
 
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
+              <div class="flex items-center gap-3 text-sm text-base-content/70">
+                <span class="led-indicator text-success"></span>
+                Useful
+              </div>
+              <div class="flex items-center gap-3 text-sm text-base-content/70">
+                <span class="led-indicator text-secondary"></span>
+                Convenient
+              </div>
+              <div class="flex items-center gap-3 text-sm text-base-content/70">
+                <span class="led-indicator text-primary"></span>
+                Functional
+              </div>
+            </div>
+
             <div class="flex flex-wrap gap-4">
               <a
                 href="/contact"
                 class="btn btn-primary btn-lg px-8 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300"
               >
-                Start a Project
+                Start a Build
                 <ArrowRight class="w-5 h-5 ml-2" />
               </a>
               <a
                 href="#offerings"
                 class="btn btn-ghost btn-lg px-8 border border-base-content/10 hover:bg-base-content/5"
               >
-                Explore Services
+                Explore Systems
               </a>
             </div>
           </div>
@@ -90,25 +81,25 @@ import Portfolio from "../components/Portfolio.astro";
           <!-- Right Visual -->
           <div class="lg:w-1/2 w-full relative">
             <div
-              class="overflow-hidden relative z-10 glass-card p-8 rounded-2xl border border-base-content/5 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500"
+              class="overflow-hidden relative z-10 card-terminal transform -rotate-1 hover:rotate-0 transition-transform duration-500"
             >
               <div
-                class="flex items-center gap-2 mb-6 border-b border-base-content/10 pb-4"
+                class="flex items-center gap-2 px-6 py-4 border-b-2 border-base-content/10 bg-base-200/25"
               >
                 <div class="w-3 h-3 rounded-full bg-error"></div>
                 <div class="w-3 h-3 rounded-full bg-warning"></div>
                 <div class="w-3 h-3 rounded-full bg-success"></div>
                 <div class="ml-auto text-xs text-base-content/40 font-mono">
-                  server.ts
+                  seed.ts
                 </div>
               </div>
-              <div class="space-y-3 font-mono text-sm">
+              <div class="space-y-3 font-mono text-sm p-6">
                 <div class="flex gap-4">
                   <span class="text-base-content/30">01</span>
                   <span class="text-secondary">import</span>
-                  <span class="text-base-content/80">{"{createServer}"}</span>
+                  <span class="text-base-content/80">{"{createNode}"}</span>
                   <span class="text-secondary">from</span>
-                  <span class="text-accent">'cogito-core'</span>;
+                  <span class="text-accent">'cogito/software'</span>;
                 </div>
                 <div class="flex gap-4">
                   <span class="text-base-content/30">02</span>
@@ -116,22 +107,24 @@ import Portfolio from "../components/Portfolio.astro";
                 <div class="flex gap-4">
                   <span class="text-base-content/30">03</span>
                   <span class="text-primary">const</span>
-                  <span class="text-warning">app</span>
+                  <span class="text-warning">node</span>
                   <span class="text-base-content/80">=</span>
-                  <span class="text-warning">createServer</span>({}
+                  <span class="text-warning">createNode</span>({}
                   <div class="flex gap-4">
                     <span class="text-base-content/30">04</span>
-                    <span class="pl-4 text-base-content/80">performance:</span>
-                    <span class="text-accent">'maximized'</span>,
+                    <span class="pl-4 text-base-content/80">localFirst:</span>
+                    <span class="text-success">true</span>,
                   </div>
                   <div class="flex gap-4">
                     <span class="text-base-content/30">05</span>
-                    <span class="pl-4 text-base-content/80">architecture:</span>
-                    <span class="text-accent">'clean'</span>,
+                    <span class="pl-4 text-base-content/80"
+                      >offlineCapable:</span
+                    >
+                    <span class="text-success">true</span>,
                   </div>
                   <div class="flex gap-4">
                     <span class="text-base-content/30">06</span>
-                    <span class="pl-4 text-base-content/80">bloatware:</span>
+                    <span class="pl-4 text-base-content/80">lockIn:</span>
                     <span class="text-error">false</span>
                   </div>
                   <div class="flex gap-4">
@@ -174,10 +167,14 @@ import Portfolio from "../components/Portfolio.astro";
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Web Apps -->
           <div
-            class="group p-8 rounded-2xl bg-base-200/30 hover:bg-base-200/50 border border-base-content/5 hover:border-primary/20 transition-all duration-300"
+            class="group card-riveted p-8 bg-base-200/25 hover:bg-base-200/40 hover:border-primary/20 transition-colors duration-200"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
+              class="w-12 h-12 rounded-none bg-base-100/40 border-2 border-base-content/10 flex items-center justify-center text-primary mb-6 group-hover:border-primary/30 transition-colors"
             >
               <Globe class="w-6 h-6" />
             </div>
@@ -189,10 +186,14 @@ import Portfolio from "../components/Portfolio.astro";
 
           <!-- Backend -->
           <div
-            class="group p-8 rounded-2xl bg-base-200/30 hover:bg-base-200/50 border border-base-content/5 hover:border-secondary/20 transition-all duration-300"
+            class="group card-riveted p-8 bg-base-200/25 hover:bg-base-200/40 hover:border-secondary/20 transition-colors duration-200"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform"
+              class="w-12 h-12 rounded-none bg-base-100/40 border-2 border-base-content/10 flex items-center justify-center text-secondary mb-6 group-hover:border-secondary/30 transition-colors"
             >
               <Terminal class="w-6 h-6" />
             </div>
@@ -205,10 +206,14 @@ import Portfolio from "../components/Portfolio.astro";
 
           <!-- Integration -->
           <div
-            class="group p-8 rounded-2xl bg-base-200/30 hover:bg-base-200/50 border border-base-content/5 hover:border-accent/20 transition-all duration-300"
+            class="group card-riveted p-8 bg-base-200/25 hover:bg-base-200/40 hover:border-accent/20 transition-colors duration-200"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform"
+              class="w-12 h-12 rounded-none bg-base-100/40 border-2 border-base-content/10 flex items-center justify-center text-accent mb-6 group-hover:border-accent/30 transition-colors"
             >
               <Code2 class="w-6 h-6" />
             </div>
@@ -220,10 +225,14 @@ import Portfolio from "../components/Portfolio.astro";
 
           <!-- AI & ML -->
           <div
-            class="group p-8 rounded-2xl bg-base-200/30 hover:bg-base-200/50 border border-base-content/5 hover:border-info/20 transition-all duration-300"
+            class="group card-riveted p-8 bg-base-200/25 hover:bg-base-200/40 hover:border-info/20 transition-colors duration-200"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="w-12 h-12 rounded-xl bg-info/10 flex items-center justify-center text-info mb-6 group-hover:scale-110 transition-transform"
+              class="w-12 h-12 rounded-none bg-base-100/40 border-2 border-base-content/10 flex items-center justify-center text-info mb-6 group-hover:border-info/30 transition-colors"
             >
               <Cpu class="w-6 h-6" />
             </div>
@@ -248,15 +257,19 @@ import Portfolio from "../components/Portfolio.astro";
           <!-- MVP Offer -->
           <a
             href="/mvp-offer"
-            class="group relative overflow-hidden rounded-3xl bg-base-100 border border-base-content/5 hover:border-primary/30 transition-all duration-300 p-8"
+            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-primary/30 transition-colors duration-200 p-8"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-primary/10"
+              class="absolute top-0 right-0 w-32 h-32 bg-primary/5 -mr-8 -mt-8 transition-all group-hover:bg-primary/10"
             >
             </div>
             <div class="relative z-10">
               <div
-                class="mb-6 inline-flex p-3 rounded-xl bg-primary/10 text-primary"
+                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-primary"
               >
                 <Rocket class="w-6 h-6" />
               </div>
@@ -279,15 +292,19 @@ import Portfolio from "../components/Portfolio.astro";
           <!-- Partnership -->
           <a
             href="/partnership"
-            class="group relative overflow-hidden rounded-3xl bg-base-100 border border-base-content/5 hover:border-secondary/30 transition-all duration-300 p-8"
+            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-secondary/30 transition-colors duration-200 p-8"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-secondary/10"
+              class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 -mr-8 -mt-8 transition-all group-hover:bg-secondary/10"
             >
             </div>
             <div class="relative z-10">
               <div
-                class="mb-6 inline-flex p-3 rounded-xl bg-secondary/10 text-secondary"
+                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-secondary"
               >
                 <Handshake class="w-6 h-6" />
               </div>
@@ -311,15 +328,19 @@ import Portfolio from "../components/Portfolio.astro";
 
           <a
             href="/custom-solution"
-            class="group relative overflow-hidden rounded-3xl bg-base-100 border border-base-content/5 hover:border-accent/30 transition-all duration-300 p-8"
+            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-accent/30 transition-colors duration-200 p-8"
           >
+            <span class="rivet-accent top-3 left-3"></span>
+            <span class="rivet-accent top-3 right-3"></span>
+            <span class="rivet-accent bottom-3 left-3"></span>
+            <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-accent/10"
+              class="absolute top-0 right-0 w-32 h-32 bg-accent/5 -mr-8 -mt-8 transition-all group-hover:bg-accent/10"
             >
             </div>
             <div class="relative z-10">
               <div
-                class="mb-6 inline-flex p-3 rounded-xl bg-accent/10 text-accent"
+                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-accent"
               >
                 <Cpu class="w-6 h-6" />
               </div>

@@ -54,9 +54,6 @@
   default: true;
   color-scheme: "dark";
 
-  default: true;
-  color-scheme: "dark";
-
   /* 
        BASE COLORS: GUNMETAL (Вороная сталь)
        Hue 240-250 (Синий спектр), но очень низкая насыщенность (0.02-0.03).
@@ -101,7 +98,7 @@
   --radius-selector: 1px;
   --radius-field: 1px;
   --radius-box: 2px; /* Микро-скругление, чтобы не резало глаз, но сохраняло строгость */
-  --border: 1px;
+  --border: 2px;
   --noise: 1;
 }
 
@@ -116,7 +113,8 @@
 
 /* Custom Utilities */
 @utility card-terminal {
-  @apply border border-base-content/20 bg-base-100 shadow-none rounded-md;
+  @apply border-2 border-base-content/20 bg-base-100 shadow-none;
+  border-radius: var(--radius-box);
 }
 
 @utility text-mono {
@@ -132,13 +130,12 @@ h5,
 h6 {
   font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
 }
 
 body {
   font-family: var(--font-mono);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-  background-attachment: fixed;
+  background-color: var(--color-base-100);
 }
 
 html {
@@ -149,12 +146,14 @@ html {
 
 /* Glassmorphism Utilities */
 @utility glass {
-  @apply backdrop-blur-md bg-base-100/60 border border-white/10 shadow-lg;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  @apply backdrop-blur-md bg-base-200/40 border-2 border-base-content/10 shadow-none;
+  border-radius: var(--radius-box);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 
 @utility glass-card {
-  @apply glass rounded-2xl p-6 transition-all duration-300 hover:bg-base-100/80 hover:shadow-2xl hover:-translate-y-1;
+  @apply glass p-6 transition-colors duration-200 hover:bg-base-200/55;
 }
 
 /* Geometric Background Pattern */
@@ -167,7 +166,7 @@ html {
     ),
     linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black, transparent 80%);
-  opacity: 0.05;
+  opacity: 0.1;
 }
 
 .geometric-lines {
@@ -212,16 +211,27 @@ html {
 }
 
 /* 2. Эффект терминала (Scanlines - опционально) */
-@utility bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: linear-gradient(
-      to right,
-      var(--color-base-content) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px);
-  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-  opacity: 0.05;
+@utility bg-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 2px,
+    transparent 7px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.08;
+}
+
+/* 2b. Виньетка для "центра управления" */
+@utility bg-vignette {
+  background-image: radial-gradient(
+    circle at 50% 30%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
 }
 
 /* 3. Индикатор статуса (светящаяся точка) */
@@ -261,10 +271,16 @@ html {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
+/* 7. Noise utility (используем слоями, а не на body) */
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.35'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
 /* 6. Декоративные "Болты" (Rivets) */
 /* Добавляет маленькие точки по углам карточки */
 @utility card-riveted {
-  @apply relative border border-base-content/20 bg-base-200 p-6;
+  @apply relative border-2 border-base-content/10 bg-base-200 p-6 rounded-none;
 }
 @utility rivet-accent {
   position: absolute;
