@@ -92,9 +92,14 @@
 }
 
 /* === TIPOGRAPHY === */
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-base-100);
+  overflow-x: hidden;
   /* Плавный градиент на фоне для глубины */
   background-image: radial-gradient(
       circle at 15% 0%,
@@ -163,7 +168,7 @@ h6 {
 
 /* 4. Карточка с эффектом левитации */
 @utility card-float {
-  @apply glass-panel rounded-2xl p-8 transition-all duration-300;
+  @apply glass-panel rounded-2xl p-6 md:p-8 transition-all duration-300;
 }
 
 .card-float:hover {

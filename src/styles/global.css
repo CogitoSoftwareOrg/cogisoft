@@ -139,7 +139,7 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Вариант переключения темы через data-theme уже задан через @custom-variant */

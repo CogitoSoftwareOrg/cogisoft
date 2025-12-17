@@ -26,10 +26,14 @@ import WaitlistForm from "../../components/WaitlistForm.svelte";
 import "./styles.css";
 ---
 
-<Zero path="/magiclink" title="Magic Link | Cogito Software">
+<Zero
+  path="/magiclink"
+  title="Magic Link | Cogito Software"
+  favicon="/magiclink/favicon.ico"
+>
   <main class="min-h-screen flex flex-col">
     <!-- Hero -->
-    <section class="pt-16 md:pt-20 pb-16 md:pb-20">
+    <section class="pt-16 md:pt-20 pb-16 md:pb-20 overflow-hidden">
       <div class="container mx-auto px-6 max-w-6xl">
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div class="animate-in">
@@ -41,7 +45,7 @@ import "./styles.css";
             </div>
 
             <h1
-              class="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight"
+              class="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight"
             >
               One Link.<br />
               <span class="text-magic">Everything Your Client Needs.</span>
@@ -127,30 +131,31 @@ import "./styles.css";
                 </div>
               </div>
 
-              <!-- Links List -->
               <div class="space-y-3">
                 <!-- Link 1 -->
                 <a
                   href="#"
                   class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-primary/10 hover:border-primary/20 transition-all duration-300"
                 >
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 min-w-0">
                     <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
                     >
                       <FileText class="w-5 h-5 text-primary" />
                     </div>
-                    <div>
-                      <div class="font-semibold text-sm">Project Proposal</div>
+                    <div class="min-w-0">
+                      <div class="font-semibold text-sm truncate">
+                        Project Proposal
+                      </div>
                       <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
                       >
                         Google Drive • PDF
                       </div>
                     </div>
                   </div>
                   <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-primary transition-colors"
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-primary transition-colors shrink-0"
                   />
                 </a>
 
@@ -159,23 +164,25 @@ import "./styles.css";
                   href="#"
                   class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-secondary/10 hover:border-secondary/20 transition-all duration-300"
                 >
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 min-w-0">
                     <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
                     >
                       <Shield class="w-5 h-5 text-secondary" />
                     </div>
-                    <div>
-                      <div class="font-semibold text-sm">Design Assets</div>
+                    <div class="min-w-0">
+                      <div class="font-semibold text-sm truncate">
+                        Design Assets
+                      </div>
                       <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
                       >
                         Figma Workspace
                       </div>
                     </div>
                   </div>
                   <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-secondary transition-colors"
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-secondary transition-colors shrink-0"
                   />
                 </a>
 
@@ -184,23 +191,25 @@ import "./styles.css";
                   href="#"
                   class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-accent/10 hover:border-accent/20 transition-all duration-300"
                 >
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 min-w-0">
                     <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
                     >
                       <Trello class="w-5 h-5 text-accent" />
                     </div>
-                    <div>
-                      <div class="font-semibold text-sm">Task Board</div>
+                    <div class="min-w-0">
+                      <div class="font-semibold text-sm truncate">
+                        Task Board
+                      </div>
                       <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
                       >
                         Trello • Kanban
                       </div>
                     </div>
                   </div>
                   <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-accent transition-colors"
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-accent transition-colors shrink-0"
                   />
                 </a>
 
@@ -209,23 +218,25 @@ import "./styles.css";
                   href="#"
                   class="group/link flex items-center justify-between p-4 rounded-xl bg-base-200/40 backdrop-blur-sm border border-base-content/5 hover:bg-success/10 hover:border-success/20 transition-all duration-300"
                 >
-                  <div class="flex items-center gap-4">
+                  <div class="flex items-center gap-4 min-w-0">
                     <div
-                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform"
+                      class="w-10 h-10 rounded-lg bg-base-100 flex items-center justify-center border border-base-content/5 group-hover/link:scale-110 transition-transform shrink-0"
                     >
                       <MessageSquare class="w-5 h-5 text-success" />
                     </div>
-                    <div>
-                      <div class="font-semibold text-sm">Weekly Reports</div>
+                    <div class="min-w-0">
+                      <div class="font-semibold text-sm truncate">
+                        Weekly Reports
+                      </div>
                       <div
-                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5"
+                        class="text-[11px] text-base-content/40 uppercase tracking-wider mt-0.5 truncate"
                       >
                         Shared Folder
                       </div>
                     </div>
                   </div>
                   <ExternalLink
-                    class="w-4 h-4 text-base-content/20 group-hover/link:text-success transition-colors"
+                    class="w-4 h-4 text-base-content/20 group-hover/link:text-success transition-colors shrink-0"
                   />
                 </a>
               </div>
