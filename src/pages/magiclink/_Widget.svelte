@@ -17,7 +17,7 @@
   } from "lucide-svelte";
 
   // State
-  let isAdmin = $state(true);
+  let isAdmin = $state(false);
   let title = $state("Global Brand Co");
   let subtitle = $state("ACTIVE PORTAL");
   let footerText = $state("ONE HUB • ALL SLICES");
@@ -106,7 +106,7 @@
     >
       <button
         onclick={() => (isAdmin = true)}
-        class="flex items-center gap-2 px-6 py-2 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider
+        class="cursor-pointer flex items-center gap-2 px-6 py-2 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider
         {isAdmin
           ? 'bg-base-100 text-base-content shadow-lg scale-100'
           : 'text-base-content/40 hover:text-base-content/70 scale-95'}"
@@ -116,7 +116,7 @@
       </button>
       <button
         onclick={() => (isAdmin = false)}
-        class="flex items-center gap-2 px-6 py-2 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider
+        class="cursor-pointer flex items-center gap-2 px-6 py-2 rounded-xl transition-all duration-300 text-xs font-bold uppercase tracking-wider
         {!isAdmin
           ? 'bg-base-100 text-base-content shadow-lg scale-100'
           : 'text-base-content/40 hover:text-base-content/70 scale-95'}"
