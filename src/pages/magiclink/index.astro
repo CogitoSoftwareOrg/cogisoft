@@ -30,6 +30,7 @@ import {
 
 import Zero from "../../layouts/Zero.astro";
 import WaitlistForm from "../../components/WaitlistForm.svelte";
+import ThemeController from "../../components/ThemeController.svelte";
 import Widget from "./_Widget.svelte";
 
 import "./_styles.css";
@@ -44,6 +45,9 @@ import "./_styles.css";
   <section
     class="min-h-[90vh] flex items-center relative bg-wow overflow-hidden py-6"
   >
+    <div class="absolute top-4 right-4 sm:right-6">
+      <ThemeController client:load />
+    </div>
     <div class="container mx-auto px-6 max-w-[1400px]">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <!-- Text Content -->

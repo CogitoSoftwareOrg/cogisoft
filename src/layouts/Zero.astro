@@ -2,7 +2,6 @@
 import Footer from "../components/Footer.astro";
 import Background from "../components/Background.astro";
 import MetaPixelCode from "../components/MetaPixelCode.astro";
-import ThemeController from "../components/ThemeController.svelte";
 import Posthog from "../components/Posthog.astro";
 import SmoothScroll from "../components/SmoothScroll.astro";
 
@@ -44,10 +43,6 @@ const {
   >
     <!-- <SmoothScroll /> -->
     <Background />
-
-    <header class="flex items-center py-2 px-4 md:px-8 justify-end w-full">
-      <ThemeController client:load />
-    </header>
 
     <slot />
 
