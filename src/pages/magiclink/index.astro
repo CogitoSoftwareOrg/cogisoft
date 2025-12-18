@@ -31,8 +31,8 @@ import {
 import Zero from "../../layouts/Zero.astro";
 import WaitlistForm from "../../components/WaitlistForm.svelte";
 import ThemeController from "../../components/ThemeController.svelte";
-import Widget from "./_Widget.svelte";
 
+import Widget from "./_Widget.svelte";
 import "./_styles.css";
 ---
 
@@ -45,7 +45,7 @@ import "./_styles.css";
   <section
     class="min-h-[90vh] flex items-center relative bg-wow overflow-hidden py-6"
   >
-    <div class="absolute top-4 right-4 sm:right-6">
+    <div class="absolute top-4 right-4 sm:right-6 z-50">
       <ThemeController client:load />
     </div>
     <div class="container mx-auto px-6 max-w-[1400px]">
@@ -53,9 +53,14 @@ import "./_styles.css";
         <!-- Text Content -->
         <div class="lg:col-span-7 animate-in relative z-10">
           <div
-            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold mb-10"
+            class="inline-flex items-center gap-2 px-0 py-1.5 rounded-full text-[10px] uppercase tracking-[0.2em] font-bold mb-10"
           >
             <span class="w-2 h-2 rounded-full animate-pulse"></span>
+            <img
+              src="/magiclink/android-chrome-192x192.png"
+              alt="Magic Link"
+              class="size-5"
+            />
             Magic Link
           </div>
 
