@@ -1,5 +1,5 @@
 ---
-import { Menu } from "@lucide/astro";
+import { Menu, X } from "@lucide/astro";
 
 import ThemeController from "$components/ThemeController.svelte";
 
@@ -55,26 +55,102 @@ const { path }: Props = Astro.props;
     </nav>
 
     <!-- Actions -->
-    <div class="flex items-center gap-4">
-      <ThemeController client:load />
+    <div class="flex items-center gap-2 sm:gap-4">
+      <div class="hidden md:flex items-center gap-2">
+        <ThemeController client:load />
+      </div>
 
-      <!-- Mobile Menu Button (Simple implementation) -->
-      <div class="md:hidden dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-          <Menu class="w-5 h-5" />
+      <!-- Mobile Menu Drawer -->
+      <div class="md:hidden drawer drawer-end">
+        <input id="mobile-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex items-center">
+          <label
+            for="mobile-drawer"
+            class="btn btn-ghost btn-circle hover:bg-base-content/5 transition-colors"
+          >
+            <Menu class="w-5 h-5" />
+          </label>
         </div>
-        <ul
-          tabindex="0"
-          class="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow-none bg-base-100 w-52 border border-base-content/10"
-        >
-          {
-            links.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
-        </ul>
+        <div class="drawer-side z-100">
+          <label
+            for="mobile-drawer"
+            aria-label="close sidebar"
+            class="drawer-overlay"></label>
+          <div
+            class="menu p-0 w-[85vw] max-w-80 min-h-full bg-base-100 text-base-content flex flex-col border-l border-base-content/10"
+          >
+            <!-- Drawer Header -->
+            <div
+              class="h-16 px-6 flex items-center justify-between border-b border-base-content/5"
+            >
+              <span
+                class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40"
+                >Navigation</span
+              >
+              <label
+                for="mobile-drawer"
+                class="btn btn-ghost btn-sm btn-circle opacity-50 hover:opacity-100"
+              >
+                <X class="w-5 h-5" />
+              </label>
+            </div>
+
+            <!-- Drawer Links -->
+            <nav class="flex-1 px-8 py-12 flex flex-col gap-6">
+              {
+                links.map((link) => (
+                  <a
+                    href={link.href}
+                    class={`text-3xl font-bold tracking-tighter transition-all hover:translate-x-2 ${
+                      path === link.href
+                        ? "text-primary"
+                        : "text-base-content/40 hover:text-base-content"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+            </nav>
+
+            <!-- Drawer Footer -->
+            <div class="p-8 border-t border-base-content/5 space-y-8">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p
+                    class="text-[10px] uppercase tracking-widest opacity-30 font-bold mb-3"
+                  >
+                    Contact
+                  </p>
+                  <a
+                    href="mailto:cogitoteamdev@gmail.com"
+                    class="text-sm font-medium hover:text-primary transition-colors block"
+                    >cogitoteamdev@gmail.com</a
+                  >
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                  <p
+                    class="text-[10px] uppercase tracking-widest opacity-30 font-bold"
+                  >
+                    Theme
+                  </p>
+                  <ThemeController client:load />
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <span
+                  class="text-[10px] uppercase tracking-widest opacity-20 font-bold"
+                  >Cogito Software © 2025</span
+                >
+                <span
+                  class="text-[10px] uppercase tracking-widest opacity-20 font-bold"
+                  >Own your tech</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
