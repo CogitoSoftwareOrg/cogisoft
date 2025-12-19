@@ -1,7 +1,7 @@
 ---
 import { Menu } from "@lucide/astro";
 
-import ThemeController from "./ThemeController.svelte";
+import ThemeController from "$components/ThemeController.svelte";
 
 interface Props {
   path: string;
@@ -9,9 +9,10 @@ interface Props {
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/mvp-offer", label: "MVP Offer" },
-  { href: "/custom-solution", label: "Custom Solutions" },
+  { href: "/mvp-offer", label: "MVP" },
+  { href: "/custom-solution", label: "Custom" },
   { href: "/partnership", label: "Partnership" },
+  { href: "/blog", label: "Blog" },
 ];
 
 const { path }: Props = Astro.props;

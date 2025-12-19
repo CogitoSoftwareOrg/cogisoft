@@ -1,0 +1,474 @@
+---
+import { Image } from "astro:assets";
+import type { MarkdownHeading } from "astro";
+
+import "$styles/global.css";
+import Header from "$components/Header.astro";
+import Footer from "$components/Footer.astro";
+import Posthog from "$components/Posthog.astro";
+import MetaPixelCode from "$components/MetaPixelCode.astro";
+import WaitlistForm from "$components/WaitlistForm.svelte";
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate?: Date;
+  author?: string;
+  image?: any;
+  headings?: MarkdownHeading[];
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  author,
+  image,
+  headings = [],
+} = Astro.props;
+
+const formattedDate = pubDate
+  ? new Intl.DateTimeFormat("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(pubDate)
+  : null;
+
+const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon_io/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Cogito Software</title>
+
+    <script is:inline>
+      const theme = localStorage.getItem("theme") || "LIGHT";
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
+
+    <!-- KaTeX for Math -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFas9aVVUsq"
+      crossorigin="anonymous"
+    />
+
+    <Posthog />
+    <MetaPixelCode />
+
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: "-100px 0px -66%",
+        threshold: 1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const tocLinks = document.querySelectorAll(".toc-item a");
+            tocLinks.forEach((link) => {
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+                link.parentElement?.classList.add("active");
+              } else {
+                link.classList.remove("active");
+                link.parentElement?.classList.remove("active");
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".blog-content h2, .blog-content h3")
+        .forEach((h) => {
+          observer.observe(h);
+        });
+    </script>
+  </head>
+  <body
+    class="bg-base-100 text-base-content antialiased font-sans selection:bg-primary/20 selection:text-primary overflow-x-hidden"
+  >
+    <Header path="/blog" />
+
+    <main class="w-full">
+      <header class="container mx-auto px-6 pt-24 pb-16 text-center max-w-4xl">
+        <div class="flex flex-col items-center gap-6 mb-12">
+          <div
+            class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] opacity-40"
+          >
+            <span>Now</span>
+            <span class="opacity-20">/</span>
+            <span>Engineering</span>
+          </div>
+
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.95] text-balance font-display"
+          >
+            {title}
+          </h1>
+        </div>
+
+        {
+          image && (
+            <div class="w-full max-w-6xl mx-auto mb-12 px-0 md:px-4">
+              <div class="overflow-hidden rounded-2xl md:rounded-4xl bg-base-200 shadow-2xl">
+                <Image
+                  src={image}
+                  alt={title}
+                  width={1200}
+                  height={675}
+                  class="w-full h-auto object-cover"
+                  loading="eager"
+                />
+              </div>
+            </div>
+          )
+        }
+
+        <div
+          class="flex flex-col items-center gap-2 opacity-50 text-sm font-medium"
+        >
+          {author && <span>{author}</span>}
+          {
+            formattedDate && (
+              <time datetime={pubDate?.toISOString()}>{formattedDate}</time>
+            )
+          }
+        </div>
+      </header>
+
+      <div class="container mx-auto px-6 py-12 md:py-24 max-w-7xl">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-20 items-start"
+        >
+          <article class="min-w-0">
+            <div
+              class="blog-content prose prose-zinc dark:prose-invert max-w-none"
+            >
+              <slot />
+            </div>
+
+            <footer
+              class="mt-32 pt-16 border-t border-base-content/10 flex justify-between items-center"
+            >
+              <a
+                href="/blog"
+                class="text-xs font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity"
+              >
+                ← Back to Feed
+              </a>
+            </footer>
+          </article>
+
+          <aside class="sticky top-32 hidden lg:block space-y-12">
+            <nav class="toc">
+              <h2
+                class="text-[10px] uppercase tracking-[0.3em] font-black mb-8 opacity-30"
+              >
+                Table of Contents
+              </h2>
+              <ul class="flex flex-col gap-4">
+                {
+                  tocHeadings.map((heading) => (
+                    <li class={`toc-item depth-${heading.depth}`}>
+                      <a
+                        href={`#${heading.slug}`}
+                        class="text-[13px] font-medium opacity-40 hover:opacity-100 transition-all block leading-relaxed hover:translate-x-1"
+                      >
+                        {heading.text}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+
+            <div
+              class="newsletter-cta p-6 bg-base-200/50 rounded-2xl border border-base-content/5"
+            >
+              <h2
+                class="text-[10px] uppercase tracking-[0.3em] font-black mb-4 opacity-30"
+              >
+                Newsletter
+              </h2>
+              <p class="text-xs opacity-50 mb-6 leading-relaxed">
+                Insights on software engineering and design delivered weekly.
+              </p>
+              <WaitlistForm
+                subtext="Insights on software engineering and design delivered weekly."
+                client:load
+                experiment="cogisoft-newsletter"
+                intent="newsletter-sidebar"
+                buttonLabel="Join"
+                placeholder="Email"
+                accented={false}
+                column
+              />
+            </div>
+
+            <div class="social-links">
+              <h2
+                class="text-[10px] uppercase tracking-[0.3em] font-black mb-6 opacity-30"
+              >
+                Connect
+              </h2>
+              <div class="flex flex-col gap-4">
+                <a
+                  href="https://twitter.com/cogisoft"
+                  class="flex items-center gap-3 text-xs font-bold opacity-40 hover:opacity-100 transition-all hover:translate-x-1"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                    ></path></svg
+                  >
+                  Twitter / X
+                </a>
+                <!-- <a
+                  href="https://linkedin.com/company/cogitosoftware"
+                  class="flex items-center gap-3 text-xs font-bold opacity-40 hover:opacity-100 transition-all hover:translate-x-1"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path><rect width="4" height="12" x="2" y="9"
+                    ></rect><circle cx="4" cy="4" r="2"></circle></svg
+                  >
+                  LinkedIn
+                </a> -->
+                <a
+                  href="https://github.com/CogitoSoftwareOrg"
+                  class="flex items-center gap-3 text-xs font-bold opacity-40 hover:opacity-100 transition-all hover:translate-x-1"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    ></path><path d="M9 18c-4.51 2-4.51-2-7-2"></path></svg
+                  >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  /* LINEAR-INSPIRED ORGANIC STYLES */
+
+  :root {
+  }
+
+  .blog-content {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: color-mix(in oklch, var(--color-base-content), transparent 10%);
+  }
+
+  /* Headlines refinement - Linear Style */
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    font-family: var(--font-display);
+    text-transform: none !important;
+    letter-spacing: -0.04em !important;
+    font-weight: 700;
+    color: var(--color-base-content);
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    scroll-margin-top: 120px;
+  }
+
+  .blog-content h2 {
+    font-size: 2.5rem;
+    border-bottom: 1px solid
+      color-mix(in oklch, var(--color-base-content), transparent 95%);
+    padding-bottom: 0.5rem;
+  }
+  .blog-content h3 {
+    font-size: 1.75rem;
+  }
+
+  /* Code Blocks - Minimalistic */
+  .blog-content pre {
+    background-color: var(--color-base-200) !important;
+    border: 1px solid
+      color-mix(in oklch, var(--color-base-content), transparent 85%);
+    border-radius: 0;
+    padding: 1.5rem !important;
+    margin: 2.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    max-width: 100%;
+    color: var(--color-base-content) !important;
+  }
+
+  /* Custom scrollbar for code blocks */
+  .blog-content pre::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .blog-content pre::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .blog-content pre::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--color-base-content), transparent 80%);
+    border-radius: 0;
+  }
+
+  .blog-content pre code {
+    background-color: transparent !important;
+    display: block;
+    min-width: 100%;
+    font-family: var(--font-mono);
+    padding: 0 !important;
+    border-radius: 0;
+    font-weight: 400;
+    color: var(--color-base-content) !important;
+  }
+
+  /* Remove background colors from syntax highlighting tokens, but keep text colors */
+  .blog-content pre span,
+  .blog-content pre code span {
+    background-color: transparent !important;
+    background: transparent !important;
+    opacity: 1 !important;
+  }
+
+  /* Inline code - Minimalistic */
+  .blog-content :not(pre) > code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    padding: 0.15em 0.4em;
+    background: transparent;
+    border: 1px solid
+      color-mix(in oklch, var(--color-base-content), transparent 80%);
+    border-radius: 0;
+    color: var(--color-base-content);
+    font-weight: 400;
+  }
+
+  /* Blockquotes - Linear style */
+  .blog-content blockquote {
+    margin: 4rem 0;
+    padding: 0 0 0 2.5rem;
+    border-left: 2px solid var(--color-primary);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    background: transparent;
+    font-style: italic;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .blog-content blockquote p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--color-base-content);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* Horizontal rule */
+  .blog-content hr {
+    margin: 5rem 0;
+    border: none;
+    border-top: 1px solid
+      color-mix(in oklch, var(--color-base-content), transparent 90%);
+  }
+
+  /* TOC Active/Hover */
+  .toc-item a.active {
+    opacity: 1;
+    color: var(--color-primary);
+    transform: translateX(4px);
+  }
+
+  .toc-item.depth-3 {
+    padding-left: 1.5rem;
+  }
+
+  /* Images inside content */
+  .blog-content img {
+    border-radius: 1.5rem;
+    margin: 4rem auto;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Table styling */
+  .blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3rem 0;
+    font-size: 1rem;
+  }
+
+  .blog-content th {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 2px solid
+      color-mix(in oklch, var(--color-base-content), transparent 80%);
+    font-weight: 700;
+  }
+
+  .blog-content td {
+    padding: 1rem;
+    border-bottom: 1px solid
+      color-mix(in oklch, var(--color-base-content), transparent 93%);
+  }
+
+  /* Prevent x-scroll on mobile for tables */
+  .prose :where(table):not(:where([class~="not-prose"] *)) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>

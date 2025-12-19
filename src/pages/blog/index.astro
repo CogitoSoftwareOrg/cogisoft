@@ -1,0 +1,212 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+import Root from "$layouts/Root.astro";
+import WaitlistForm from "$components/WaitlistForm.svelte";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const featuredPost = posts[0];
+const remainingPosts = posts.slice(1);
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+};
+---
+
+<Root title="Blog | Cogito Software" path="/blog">
+  <main class="min-h-screen pt-32 pb-24">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <!-- Header -->
+      <header class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div
+            class="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--color-primary)]"
+          >
+          </div>
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.4em] opacity-40"
+            >Engineering & Design Journal</span
+          >
+        </div>
+        <h1
+          class="text-6xl md:text-8xl font-bold tracking-tighter leading-[0.85] font-display"
+        >
+          THOUGHTS <br />
+          <span class="opacity-20">& INSIGHTS</span>
+        </h1>
+      </header>
+
+      {
+        featuredPost && (
+          <section class="mb-32">
+            <a
+              href={`/blog/${featuredPost.id}`}
+              class="group block relative overflow-hidden rounded-3xl bg-base-200 border border-base-content/5 transition-all duration-500 hover:border-primary/20"
+            >
+              <div class="grid lg:grid-cols-2 gap-0 items-center">
+                <div class="p-8 md:p-16 lg:p-20 order-2 lg:order-1">
+                  <div class="flex items-center gap-4 mb-8">
+                    <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">
+                      Featured
+                    </span>
+                    <time class="text-xs opacity-40 font-bold uppercase tracking-widest">
+                      {formatDate(featuredPost.data.pubDate)}
+                    </time>
+                  </div>
+                  <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 group-hover:text-primary transition-colors leading-[1.1] font-display">
+                    {featuredPost.data.title}
+                  </h2>
+                  <p class="text-lg opacity-60 mb-12 line-clamp-3 leading-relaxed">
+                    {featuredPost.data.description}
+                  </p>
+                  <div class="flex items-center gap-3 text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition-transform">
+                    Read Article
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <>
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </>
+                    </svg>
+                  </div>
+                </div>
+                <div class="relative aspect-video lg:aspect-square overflow-hidden order-1 lg:order-2">
+                  {featuredPost.data.image && (
+                    <Image
+                      src={featuredPost.data.image}
+                      alt={featuredPost.data.title}
+                      width={800}
+                      height={800}
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
+                  <div class="absolute inset-0 bg-linear-to-t from-base-100/20 to-transparent" />
+                </div>
+              </div>
+            </a>
+          </section>
+        )
+      }
+
+      <!-- Post Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          remainingPosts.map((post) => (
+            <a
+              href={`/blog/${post.id}`}
+              class="group flex flex-col h-full bg-base-100 border border-base-content/5 rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5"
+            >
+              <div class="aspect-video overflow-hidden bg-base-200">
+                {post.data.image && (
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
+              </div>
+              <div class="p-8 flex flex-col flex-1">
+                <div class="flex items-center gap-3 mb-6">
+                  <time class="text-[10px] font-bold uppercase tracking-widest opacity-30">
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                </div>
+                <h3 class="text-2xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors leading-snug font-display">
+                  {post.data.title}
+                </h3>
+                <p class="text-sm opacity-50 mb-8 line-clamp-2 leading-relaxed flex-1">
+                  {post.data.description}
+                </p>
+                <div class="pt-6 border-t border-base-content/5 flex items-center justify-between">
+                  <span class="text-[10px] font-black uppercase tracking-widest opacity-40">
+                    Read Full Story
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary"
+                  >
+                    <>
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Newsletter Section -->
+      <section class="mt-40 border-t border-base-content/5 pt-40 pb-20">
+        <div class="max-w-2xl mx-auto text-center">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-widest mb-8"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"
+              ></path></svg
+            >
+            Stay Updated
+          </div>
+          <h2
+            class="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-display"
+          >
+            JOIN OUR <span class="text-primary italic">DIGEST</span>
+          </h2>
+          <p class="text-lg opacity-50 mb-12 leading-relaxed">
+            Get the latest insights on software engineering, product design, and
+            tech strategy delivered directly to your inbox.
+          </p>
+          <div class="max-w-md mx-auto">
+            <WaitlistForm
+              client:load
+              experiment="cogisoft-newsletter"
+              intent="newsletter-hub"
+              buttonLabel="Subscribe"
+              placeholder="Enter your email"
+              subtext="No spam. Just engineering excellence."
+              accented={false}
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Root>

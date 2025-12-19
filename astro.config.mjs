@@ -7,13 +7,45 @@ import svelte from "@astrojs/svelte";
 
 import node from "@astrojs/node";
 
+import mdx from "@astrojs/mdx";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 // https://astro.build/config
 export default defineConfig({
+  site: "https://cogisoft.dev",
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [svelte()],
+  integrations: [
+    svelte(),
+    mdx({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+      syntaxHighlight: "shiki",
+      shikiConfig: {
+        themes: {
+          light: "catppuccin-latte",
+          dark: "catppuccin-mocha",
+        },
+        wrap: false,
+      },
+    }),
+  ],
+
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      themes: {
+        light: "catppuccin-latte",
+        dark: "catppuccin-mocha",
+      },
+      wrap: false,
+    },
+  },
 
   adapter: node({
     mode: "standalone",

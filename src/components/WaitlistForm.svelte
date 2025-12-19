@@ -5,7 +5,7 @@
 <script lang="ts">
   import { ArrowRight, Check, CheckCircle, Loader2, Mail } from "lucide-svelte";
 
-  import { pb } from "../lib/pb";
+  import { pb } from "$lib/pb";
 
   let {
     experiment = "magiclink",
@@ -14,6 +14,7 @@
     subtext = "No credit card needed. Set up in 2 minutes.",
     placeholder = "Work email",
     accented = true,
+    column = false,
   } = $props();
 
   let email = $state("");
@@ -160,7 +161,11 @@
     {:else}
       <!-- Regular version - streamlined and tasty -->
       <form class="w-full" onsubmit={handleSubmit}>
-        <div class="flex flex-col sm:flex-row gap-2">
+        <div
+          class={column
+            ? "flex flex-col gap-2"
+            : "flex flex-col sm:flex-row gap-2"}
+        >
           <label
             class="input input-lg bg-base-100/50 border-white/5 flex-1 h-14 rounded-xl flex items-center gap-3 px-4 focus-within:border-primary/30 transition-all"
           >

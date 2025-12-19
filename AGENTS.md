@@ -152,7 +152,7 @@ src/pages/magiclink/[landing-name]/
 4. **Implement lead collection**:
 
    ```typescript
-   import { pb } from "../../lib/pb";
+   import { pb } from "$lib/pb";
 
    // In Svelte component or Astro page
    await pb.collection("leads").create({
@@ -180,7 +180,7 @@ src/pages/magiclink/[landing-name]/
 ```astro
 ---
 // src/pages/magiclink/product-x/index.astro
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "$layouts/Layout.astro";
 import InteractiveDemo from "./components/InteractiveDemo.svelte";
 ---
 
@@ -264,7 +264,7 @@ Copy `.env.example` to `.env` and fill in required values. Critical for local de
 All lead collection should follow this pattern:
 
 ```typescript
-import { pb } from "../lib/pb";
+import { pb } from "$lib/pb";
 
 // In component or page
 const leadData = {
