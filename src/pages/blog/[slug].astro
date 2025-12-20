@@ -5,16 +5,36 @@ import Blog from "$layouts/Blog.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  const sortedPosts = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+
+  return sortedPosts.map((post, index) => {
+    const prevPost = sortedPosts[index + 1] || sortedPosts[0];
+    const nextPost =
+      sortedPosts[index - 1] || sortedPosts[sortedPosts.length - 1];
+
+    return {
+      params: { slug: post.id },
+      props: { post, prevPost, nextPost },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
+
+// Calculate reading time
+const words = post.body?.split(/\s+/).length || 0;
+const readTime = Math.ceil(words / 200);
 ---
 
-<Blog {...post.data} headings={headings}>
+<Blog
+  {...post.data}
+  headings={headings}
+  readTime={readTime}
+  prevPost={prevPost}
+  nextPost={nextPost}
+>
   <Content />
 </Blog>
