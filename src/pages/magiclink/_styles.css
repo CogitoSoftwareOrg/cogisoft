@@ -160,7 +160,8 @@ h6 {
 @utility glass-panel {
   @apply backdrop-blur-xl bg-base-100/60 border border-base-content/10 shadow-xl;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
-    inset 0 0 0 1px oklch(var(--bc) / 0.1);
+    inset 0 0 0 1px
+      color-mix(in oklch, var(--color-base-content), transparent 90%);
 }
 
 /* 3. Кнопка с мягким свечением (Primary CTA) */
@@ -173,14 +174,20 @@ h6 {
     var(--color-accent) 50%,
     var(--color-primary) 100%
   );
-  transition: 0.5s;
-  box-shadow: 0 0 20px oklch(var(--p) / 0.4);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px -5px color-mix(in oklch, var(--color-primary), transparent
+        70%);
 }
 
 .btn-glow:hover {
   background-position: right center;
-  box-shadow: 0 0 30px oklch(var(--p) / 0.6);
+  box-shadow: 0 15px 30px -10px color-mix(in oklch, var(--color-primary), transparent
+        50%);
   transform: translateY(-2px);
+}
+
+.btn-glow:active {
+  transform: translateY(0);
 }
 
 /* 4. Карточка с эффектом левитации */

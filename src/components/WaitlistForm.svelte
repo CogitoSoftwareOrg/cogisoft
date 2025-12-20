@@ -8,11 +8,11 @@
   import { pb } from "$lib/pb";
 
   let {
-    experiment = "magiclink",
-    intent = "hero",
-    buttonLabel = "Create Your Portal for Free",
-    subtext = "No credit card needed. Set up in 2 minutes.",
-    placeholder = "Work email",
+    experiment,
+    intent,
+    buttonLabel,
+    subtext,
+    placeholder,
     accented = true,
     column = false,
   } = $props();
@@ -67,8 +67,10 @@
     </div>
     <div class="min-w-0">
       <h3 class="text-lg md:text-xl font-bold">You're on the list!</h3>
-      <p class="text-sm md:text-base text-base-content/70 mt-2 max-w-xs">
-        We'll reach out to <strong>{email}</strong> when early access is ready.
+      <p
+        class="text-sm md:text-base text-base-content/70 mt-2 max-w-xs text-pretty"
+      >
+        We'll reach out to <strong>{email}</strong>
       </p>
       <button
         type="button"
@@ -80,7 +82,7 @@
     </div>
   </div>
 {:else}
-  <div class={accented ? "relative group" : ""}>
+  <div class={accented ? "relative group w-full" : "w-full"}>
     {#if accented}
       <!-- Accented version with glow effect -->
       <div
@@ -108,13 +110,13 @@
           <form class="w-full space-y-3 md:space-y-4" onsubmit={handleSubmit}>
             <div class="relative">
               <label
-                class="input input-lg w-full bg-base-100/40 border-white/5 focus-within:border-primary/50 focus-within:ring-4 focus-within:ring-primary/10 transition-all duration-300 h-14 md:h-16 rounded-2xl flex items-center gap-3 px-4"
+                class="input input-lg w-full bg-base-100/40 border-base-content/10 focus-within:border-primary/50 focus-within:ring-4 focus-within:ring-primary/10 transition-all duration-300 h-14 md:h-16 rounded-2xl flex items-center gap-3 px-4 shadow-inner"
               >
                 <Mail
                   class="w-4 h-4 md:w-5 md:h-5 opacity-30 group-focus-within:opacity-100 transition-opacity"
                 />
                 <input
-                  type="email"
+                  type="text"
                   {placeholder}
                   class="grow bg-transparent border-none focus:ring-0 text-sm md:text-lg"
                   bind:value={email}
@@ -125,7 +127,7 @@
 
             <button
               type="submit"
-              class="btn btn-glow w-full h-14 md:h-16 rounded-2xl gap-3 text-sm md:text-lg font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all px-4"
+              class="btn btn-glow w-full h-12 md:h-16 rounded-2xl gap-3 text-sm md:text-lg font-bold hover:scale-[1.02] active:scale-[0.98] transition-all px-4"
               disabled={isSubmitting}
             >
               {#if isSubmitting}
@@ -141,7 +143,7 @@
 
             {#if subtext}
               <div
-                class="pt-2 text-[11px] text-base-content/50 flex items-center justify-center gap-2 font-medium"
+                class="pt-2 text-[11px] text-base-content/50 flex items-center justify-center gap-2 font-medium text-center"
               >
                 <Check class="w-3.5 h-3.5 text-success/70" />
                 {subtext}
@@ -163,38 +165,42 @@
       <form class="w-full" onsubmit={handleSubmit}>
         <div
           class={column
-            ? "flex flex-col gap-2"
+            ? "flex flex-col gap-3"
             : "flex flex-col sm:flex-row gap-2"}
         >
-          <label
-            class="input input-lg bg-base-100/50 border-white/5 flex-1 h-14 rounded-xl flex items-center gap-3 px-4 focus-within:border-primary/30 transition-all"
-          >
-            <Mail class="w-4 h-4 opacity-30" />
-            <input
-              type="email"
-              {placeholder}
-              class="grow bg-transparent border-none focus:ring-0"
-              bind:value={email}
-              required
-            />
-          </label>
+          <div class="relative flex-1">
+            <label
+              class="input bg-base-100/50 border-base-content/10 flex items-center gap-3 px-4 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/10 transition-all w-full h-[52px] rounded-xl shadow-inner"
+            >
+              <Mail class="w-4 h-4 opacity-40" />
+              <input
+                type="text"
+                {placeholder}
+                class="grow bg-transparent border-none focus:ring-0 py-3 text-sm"
+                bind:value={email}
+                required
+              />
+            </label>
+          </div>
           <button
             type="submit"
-            class="btn btn-glow h-14 rounded-xl gap-2 font-bold px-8 shadow-lg shadow-primary/10"
+            class="btn btn-glow h-[52px] rounded-xl gap-2 font-bold px-8 transition-all hover:scale-[1.02] active:scale-[0.98] {column
+              ? 'w-full'
+              : ''}"
             disabled={isSubmitting}
           >
             {#if isSubmitting}
               <Loader2 class="w-4 h-4 animate-spin" />
             {:else}
-              {buttonLabel}
-              <ArrowRight class="w-4 h-4" />
+              <span class="truncate">{buttonLabel}</span>
+              <ArrowRight class="w-4 h-4 shrink-0" />
             {/if}
           </button>
         </div>
 
         {#if subtext}
           <div
-            class="mt-3 text-[10px] text-base-content/40 text-center sm:text-left font-bold uppercase tracking-widest px-1"
+            class="mt-4 text-[10px] text-base-content/40 text-center sm:text-left font-bold uppercase tracking-widest px-1 leading-relaxed"
           >
             {subtext}
           </div>

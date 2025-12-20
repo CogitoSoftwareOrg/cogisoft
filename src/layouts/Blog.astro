@@ -16,6 +16,7 @@ interface Props {
   description?: string;
   pubDate?: Date;
   author?: string;
+  avatar?: any;
   image?: any;
   headings?: MarkdownHeading[];
 }
@@ -26,6 +27,7 @@ const {
   pubDate,
   author,
   image,
+  avatar,
   headings = [],
 } = Astro.props;
 
@@ -41,7 +43,7 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth overflow-x-hidden">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -84,6 +86,11 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
               if (link.getAttribute("href") === `#${id}`) {
                 link.classList.add("active");
                 link.parentElement?.classList.add("active");
+                // Scroll TOC to active item
+                link.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                });
               } else {
                 link.classList.remove("active");
                 link.parentElement?.classList.remove("active");
@@ -101,7 +108,7 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
     </script>
   </head>
   <body
-    class="bg-base-100 text-base-content antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden min-h-screen"
+    class="bg-base-100 text-base-content antialiased selection:bg-primary/20 selection:text-primary min-h-screen"
   >
     <Background />
     <Header path="/blog" />
@@ -176,20 +183,55 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
             </footer>
           </article>
 
-          <aside class="sticky top-32 hidden lg:block space-y-12">
-            <nav class="toc">
+          <aside class="sticky top-28 hidden lg:block space-y-6 self-start">
+            {
+              author && (
+                <div class="author-card p-6 bg-base-200/30 rounded-2xl border border-base-content/5 transition-all hover:bg-base-200/50">
+                  <h2 class="text-[10px] uppercase tracking-[0.3em] font-black mb-4 opacity-30">
+                    Author
+                  </h2>
+                  <div class="flex items-center gap-4">
+                    {avatar ? (
+                      <Image
+                        src={avatar}
+                        alt={author}
+                        width={128}
+                        height={128}
+                        class="w-12 h-12 object-cover rounded-full"
+                      />
+                    ) : (
+                      <div class="w-12 h-12 rounded-full bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center border border-base-content/5 text-primary font-bold shadow-inner">
+                        {author.charAt(0)}
+                      </div>
+                    )}
+                    <div class="flex flex-col">
+                      <span class="text-sm font-bold tracking-tight">
+                        {author}
+                      </span>
+                      {/* <span class="text-[10px] opacity-50 font-medium">
+                        Software Engineer
+                      </span> */}
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+
+            <nav class="toc flex flex-col max-h-[calc(100vh-520px)]">
               <h2
-                class="text-[10px] uppercase tracking-[0.3em] font-black mb-8 opacity-30"
+                class="text-[10px] uppercase tracking-[0.3em] font-black mb-6 opacity-30 shrink-0"
               >
                 Table of Contents
               </h2>
-              <ul class="flex flex-col gap-4">
+              <ul
+                class="flex flex-col gap-3 overflow-y-auto pr-2 custom-scrollbar pb-4"
+              >
                 {
                   tocHeadings.map((heading) => (
-                    <li class={`toc-item depth-${heading.depth}`}>
+                    <li class={`toc-item depth-${heading.depth} shrink-0`}>
                       <a
                         href={`#${heading.slug}`}
-                        class="text-[13px] font-medium opacity-40 hover:opacity-100 transition-all block leading-relaxed hover:translate-x-1"
+                        class="text-[12px] font-medium opacity-40 hover:opacity-100 transition-all block leading-tight hover:translate-x-1"
                       >
                         {heading.text}
                       </a>
@@ -211,8 +253,8 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
                 Insights on software engineering and design delivered weekly.
               </p>
               <WaitlistForm
-                subtext="Insights on software engineering and design delivered weekly."
                 client:load
+                subtext="Insights on software engineering and design delivered weekly."
                 experiment="cogisoft-newsletter"
                 intent="newsletter-sidebar"
                 buttonLabel="Join"
@@ -252,6 +294,15 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
                 </a>
               </div>
             </div>
+
+            <button
+              onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+              class="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] font-black opacity-30 hover:opacity-100 transition-all pt-8 border-t border-base-content/5 w-full text-left group"
+            >
+              <span class="group-hover:-translate-y-1 transition-transform"
+                >↑</span
+              > Back to Top
+            </button>
           </aside>
         </div>
       </div>
@@ -403,7 +454,18 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
   }
 
   .toc-item.depth-3 {
-    padding-left: 1.5rem;
+    padding-left: 1rem;
+  }
+
+  /* Custom Scrollbar for TOC */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 2px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: color-mix(in oklch, var(--color-base-content), transparent 80%);
   }
 
   /* Images inside content */

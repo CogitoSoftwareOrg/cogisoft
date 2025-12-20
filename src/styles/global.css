@@ -131,6 +131,38 @@
   font-family: var(--font-mono);
 }
 
+@utility btn-glow {
+  @apply btn btn-primary border-0 text-primary-content relative overflow-hidden;
+  background-size: 200% auto;
+  background-image: linear-gradient(
+    45deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 50%,
+    var(--color-primary) 100%
+  );
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px -5px color-mix(in oklch, var(--color-primary), transparent
+        70%);
+}
+
+.btn-glow:hover {
+  background-position: right center;
+  box-shadow: 0 15px 30px -10px color-mix(in oklch, var(--color-primary), transparent
+        50%);
+  transform: translateY(-2px);
+}
+
+.btn-glow:active {
+  transform: translateY(0);
+}
+
+@utility glass-panel {
+  @apply backdrop-blur-xl bg-base-100/60 border border-base-content/10 shadow-xl;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px
+      color-mix(in oklch, var(--color-base-content), transparent 90%);
+}
+
 /* Apply fonts */
 h1,
 h2,

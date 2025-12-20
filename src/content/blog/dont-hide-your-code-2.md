@@ -2,7 +2,8 @@
 title: "Don't Hide Your Code: The Art of Transparency"
 description: "Why showing your work is better than hiding behind a curtain of 'proprietary' secrets."
 pubDate: 2025-12-19
-author: "Cogito Team"
+author: "Dmitrii Sakharov"
+avatar: "../../assets/images/capibara.jpg"
 image: "../../assets/images/STEM.png"
 tags: ["engineering", "open-source", "transparency"]
 ---
