@@ -34,7 +34,7 @@ const formatDate = (date: Date) => {
           </div>
           <span
             class="text-[10px] font-black uppercase tracking-[0.4em] opacity-40"
-            >Engineering & Design Journal</span
+            >Engineering & Philosophy Journal</span
           >
         </div>
         <h1
@@ -78,8 +78,9 @@ const formatDate = (date: Date) => {
                     <Image
                       src={featuredPost.data.image}
                       alt={featuredPost.data.title}
-                      width={800}
-                      height={800}
+                      width={2000}
+                      height={2000}
+                      loading="eager"
                       class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   )}

@@ -227,7 +227,7 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
             </footer>
           </article>
 
-          <aside class="sticky top-28 hidden lg:block space-y-6 self-start">
+          <aside class="sticky top-28 hidden lg:block space-y-5 self-start">
             {
               authors && (
                 <div class="author-card p-5 bg-base-200/30 rounded-2xl border border-base-content/5 transition-all hover:bg-base-200/50">
@@ -263,9 +263,9 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
               )
             }
 
-            <nav class="toc flex flex-col max-h-[calc(100vh-520px)]">
+            <nav class="toc flex flex-col max-h-[calc(100vh-640px)]">
               <h2
-                class="text-[10px] uppercase tracking-[0.3em] font-black mb-6 opacity-30 shrink-0"
+                class="text-[10px] uppercase tracking-[0.3em] font-black mb-4 opacity-30 shrink-0"
               >
                 Table of Contents
               </h2>
@@ -295,12 +295,12 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
               >
                 Newsletter
               </h2>
-              <p class="text-xs opacity-50 mb-6 leading-relaxed">
-                Insights on software engineering and design delivered weekly.
-              </p>
+              <!-- <p class="text-xs opacity-50 mb-6 leading-relaxed">
+                Insights on software engineering delivered weekly.
+              </p> -->
               <WaitlistForm
                 client:load
-                subtext="Insights on software engineering and design delivered weekly."
+                subtext="Weekly insights to your inbox."
                 experiment="cogisoft-newsletter"
                 intent="newsletter-sidebar"
                 buttonLabel="Join"
@@ -394,26 +394,10 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
     font-size: 1.75rem;
   }
 
-  /* Code Blocks - Minimalistic */
+  /* Code Blocks - Styled via global.css .prose overrides */
   .blog-content pre {
-    background-color: var(--color-base-200) !important;
-    border: 1px solid
-      color-mix(in oklch, var(--color-base-content), transparent 85%);
-    border-radius: 0;
-    padding: 1.5rem !important;
     margin: 2.5rem 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    overflow-x: auto;
-    width: 100%;
-    max-width: 100%;
-    color: var(--color-base-content) !important;
-    display: block;
     position: relative;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
   }
 
   /* Custom scrollbar for code blocks */
@@ -427,26 +411,7 @@ const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth < 4);
 
   .blog-content pre::-webkit-scrollbar-thumb {
     background: color-mix(in oklch, var(--color-base-content), transparent 80%);
-    border-radius: 0;
-  }
-
-  .blog-content pre code {
-    background-color: transparent !important;
-    display: block;
-    min-width: 100%;
-    font-family: var(--font-mono);
-    padding: 0 !important;
-    border-radius: 0;
-    font-weight: 400;
-    color: var(--color-base-content) !important;
-  }
-
-  /* Remove background colors from syntax highlighting tokens, but keep text colors */
-  .blog-content pre span,
-  .blog-content pre code span {
-    background-color: transparent !important;
-    background: transparent !important;
-    opacity: 1 !important;
+    border-radius: var(--radius-box);
   }
 
   /* Inline code - Minimalistic */
