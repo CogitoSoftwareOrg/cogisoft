@@ -1,17 +1,31 @@
 ---
-import { Menu, X } from "@lucide/astro";
+import { Menu, X, ChevronDown } from "@lucide/astro";
 
 import ThemeController from "$components/ThemeController.svelte";
+import Button from "$components/Button.svelte";
 
 interface Props {
   path: string;
 }
 
-const links = [
+interface NavLink {
+  href?: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}
+
+const links: NavLink[] = [
   { href: "/", label: "Home" },
-  { href: "/mvp-offer", label: "MVP" },
-  { href: "/custom-solution", label: "Custom" },
-  { href: "/partnership", label: "Partnership" },
+  { href: "/about", label: "About" },
+  {
+    label: "Services",
+    children: [
+      { href: "/mvp-offer", label: "MVP" },
+      { href: "/custom-solution", label: "Custom" },
+      { href: "/partnership", label: "Partnership" },
+    ],
+  },
+  { href: "/labs", label: "Labs" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -28,14 +42,14 @@ const { path }: Props = Astro.props;
       class="text-xl font-bold tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity"
     >
       <div
-        class="size-9 bg-base-200 border border-base-content/15 flex items-center justify-center text-primary font-mono text-lg"
+        class="size-10 bg-base-200 border border-base-content/15 flex items-center justify-center text-primary font-mono text-lg"
       >
         CS
       </div>
-      <div class="hidden sm:flex flex-col leading-none">
-        <span class="text-display text-base-content">Cogito Software</span>
-        <span class="text-[10px] text-base-content/50 tracking-widest uppercase"
-          >Own your tech</span
+      <div class="hidden sm:flex flex-col leading-non">
+        <span class="text-display text-xl font-bold">Cogito Software </span>
+        <span class="text-display text-xs text-base-content/50 -mt-1"
+          >own your tech</span
         >
       </div>
     </a>
@@ -43,21 +57,58 @@ const { path }: Props = Astro.props;
     <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center gap-10">
       {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class={`text-xs font-medium uppercase tracking-widest text-base-content/70 hover:text-primary transition-colors ${path === link.href ? "text-primary" : ""}`}
-          >
-            {link.label}
-          </a>
-        ))
+        links.map((link) =>
+          link.children ? (
+            <div class="dropdown dropdown-hover dropdown-bottom">
+              <div
+                tabindex="0"
+                role="button"
+                class={`flex items-center gap-1 py-2 text-xs font-medium uppercase tracking-widest transition-colors cursor-pointer ${
+                  link.children.some((child) => path === child.href)
+                    ? "text-primary"
+                    : "text-base-content/70 hover:text-primary"
+                }`}
+              >
+                {link.label}
+                <ChevronDown class="w-3 h-3" />
+              </div>
+              <ul
+                tabindex="-1"
+                class="dropdown-content menu p-2 shadow-xl bg-base-100 border border-base-content/10 rounded-box w-52 z-1"
+              >
+                {link.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class={`text-xs uppercase tracking-widest ${
+                        path === child.href
+                          ? "text-primary font-bold"
+                          : "text-base-content/70"
+                      }`}
+                    >
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class={`text-xs font-medium uppercase tracking-widest text-base-content/70 hover:text-primary transition-colors ${path === link.href ? "text-primary" : ""}`}
+            >
+              {link.label}
+            </a>
+          )
+        )
       }
     </nav>
 
     <!-- Actions -->
-    <div class="flex items-center gap-2 sm:gap-4">
-      <div class="hidden md:flex items-center gap-2">
+    <div class="flex items-center gap-2 sm:gap-6">
+      <div class="hidden md:flex items-center gap-3">
         <ThemeController client:load />
+        <a href="/contact" class="btn btn-primary btn-soft">Contact Us</a>
       </div>
 
       <!-- Mobile Menu Drawer -->
@@ -98,18 +149,43 @@ const { path }: Props = Astro.props;
             <!-- Drawer Links -->
             <nav class="flex-1 px-8 py-12 flex flex-col gap-6">
               {
-                links.map((link) => (
-                  <a
-                    href={link.href}
-                    class={`text-3xl font-bold tracking-tighter transition-all hover:translate-x-2 ${
-                      path === link.href
-                        ? "text-primary"
-                        : "text-base-content/40 hover:text-base-content"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                ))
+                links.map((link) =>
+                  link.children ? (
+                    <div class="collapse collapse-arrow -ml-4 w-[calc(100%+2rem)]">
+                      <input type="checkbox" checked="checked" />
+                      <div class="collapse-title text-3xl font-bold tracking-tighter text-base-content/40 after:top-1/2! after:h-4! after:w-4!">
+                        {link.label}
+                      </div>
+                      <div class="collapse-content pb-0">
+                        <div class="flex flex-col gap-4 pl-4 pt-2 pb-2">
+                          {link.children.map((child) => (
+                            <a
+                              href={child.href}
+                              class={`text-2xl font-bold tracking-tighter transition-all hover:translate-x-2 ${
+                                path === child.href
+                                  ? "text-primary"
+                                  : "text-base-content/40 hover:text-base-content"
+                              }`}
+                            >
+                              {child.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <a
+                      href={link.href}
+                      class={`text-3xl font-bold tracking-tighter transition-all hover:translate-x-2 ${
+                        path === link.href
+                          ? "text-primary"
+                          : "text-base-content/40 hover:text-base-content"
+                      }`}
+                    >
+                      {link.label}
+                    </a>
+                  )
+                )
               }
             </nav>
 
@@ -123,9 +199,9 @@ const { path }: Props = Astro.props;
                     Contact
                   </p>
                   <a
-                    href="mailto:cogitoteamdev@gmail.com"
+                    href="mailto:contact@cogisoft.dev"
                     class="text-sm font-medium hover:text-primary transition-colors block"
-                    >cogitoteamdev@gmail.com</a
+                    >contact@cogisoft.dev</a
                   >
                 </div>
                 <div class="flex flex-col items-center gap-2">

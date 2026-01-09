@@ -1,33 +1,20 @@
-name: cogisoft-local
-
 services:
-  pb:
+  app:
     build:
-      context: pb
+      context: .
       dockerfile: Dockerfile
+    ports:
+      - 8090:8090
+    environment:
+      - PUBLIC_PB_URL=${PUBLIC_PB_URL:-http://localhost:8090}
+      - PUBLIC_POSTHOG_URL=${PUBLIC_POSTHOG_URL:-https://eu.i.posthog.com}
+      - PUBLIC_POSTHOG_TOKEN=${PUBLIC_POSTHOG_TOKEN:-pub}
+
+      - PB_EMAIL=${PB_EMAIL}
+      - PB_PASSWORD=${PB_PASSWORD}
+      # - STRIPE_API_KEY=${STRIPE_API_KEY}
+      # - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
     env_file:
       - .env
     volumes:
-      - ./pb/pb_data:/pb/pb_data
-      - ./pb/pb_migrations:/pb/pb_migrations
-      - ./pb/pb_hooks:/pb/pb_hooks
-    ports:
-      - "8090:8090"
-
-  # meili:
-  #   image: getmeili/meilisearch:latest
-  #   ports:
-  #     - '7700:7700'
-  #   volumes:
-  #     - ./meili/data:/meili_data
-  #   env_file:
-  #     - .env
-
-  # app:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   environment:
-  #     - ENV=${ENV}
-  #   ports:
-  #     - 3000:3000
+      - ./pb/pb_data:/app/pb_data

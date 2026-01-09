@@ -5,8 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 
 import svelte from "@astrojs/svelte";
 
-import node from "@astrojs/node";
-
 import mdx from "@astrojs/mdx";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
@@ -46,8 +44,4 @@ export default defineConfig({
       wrap: false,
     },
   },
-
-  adapter: node({
-    mode: "standalone",
-  }),
 });

@@ -31,7 +31,7 @@
       const referrer = typeof document !== "undefined" ? document.referrer : "";
 
       await pb.collection("leads").create({
-        contact: email,
+        email,
         meta: {
           email,
           intent,
@@ -116,7 +116,7 @@
                   class="w-4 h-4 md:w-5 md:h-5 opacity-30 group-focus-within:opacity-100 transition-opacity"
                 />
                 <input
-                  type="text"
+                  type="email"
                   {placeholder}
                   class="grow bg-transparent border-none focus:ring-0 text-sm md:text-lg"
                   bind:value={email}
@@ -174,7 +174,7 @@
             >
               <Mail class="w-4 h-4 opacity-40" />
               <input
-                type="text"
+                type="email"
                 {placeholder}
                 class="grow bg-transparent border-none focus:ring-0 py-3 text-sm"
                 bind:value={email}

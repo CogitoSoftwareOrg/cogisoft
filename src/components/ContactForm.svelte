@@ -7,10 +7,8 @@
   let formSubmitted = $state(false);
   let errorMessage = $state("");
 
-  let firstName = $state("");
-  let lastName = $state("");
+  let name = $state("");
   let email = $state("");
-  let projectType = $state("custom");
   let message = $state("");
 
   async function handleSubmit(e: Event) {
@@ -18,18 +16,10 @@
     isSubmitting = true;
     errorMessage = "";
 
-    const formData = {
-      firstName,
-      lastName,
-      email,
-      projectType,
-      message,
-    };
-
     try {
       await pb
         .collection("leads")
-        .create({ contact: email, meta: formData, experiment: "agency" });
+        .create({ name, email, message, experiment: "agency-contact" });
       formSubmitted = true;
     } catch (error) {
       errorMessage = "Something went wrong. Please try again.";
@@ -40,10 +30,8 @@
 
   function resetForm() {
     formSubmitted = false;
-    firstName = "";
-    lastName = "";
+    name = "";
     email = "";
-    projectType = "custom";
     message = "";
   }
 </script>
@@ -67,47 +55,16 @@
 {:else}
   <!-- Form -->
   <form class="space-y-5" onsubmit={handleSubmit}>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="form-control">
-        <label class="label pb-1" for="firstName">
-          <span class="label-text text-xs uppercase tracking-wider opacity-70"
-            >First Name</span
-          >
-        </label>
-        <input
-          id="firstName"
-          type="text"
-          placeholder="John"
-          class="input bg-base-100/50 border-base-content/10 focus:border-primary focus:bg-base-100 transition-all placeholder:opacity-40"
-          bind:value={firstName}
-        />
-      </div>
-      <div class="form-control">
-        <label class="label pb-1" for="lastName">
-          <span class="label-text text-xs uppercase tracking-wider opacity-70"
-            >Last Name</span
-          >
-        </label>
-        <input
-          id="lastName"
-          type="text"
-          placeholder="Doe"
-          class="input bg-base-100/50 border-base-content/10 focus:border-primary focus:bg-base-100 transition-all placeholder:opacity-40"
-          bind:value={lastName}
-        />
-      </div>
-    </div>
-
     <div class="form-control">
       <p class="text-xs text-base-content/70 mb-1">
-        EMAIL/PHONE <span class="text-error">*</span>
+        EMAIL <span class="text-error">*</span>
       </p>
       <label class="input pb-1 w-full" for="email">
         <!-- <span class="label text-xs uppercase tracking-wider opacity-70"></span> -->
         <input
           id="email"
           type="text"
-          placeholder="john@example.com or +31612345678"
+          placeholder="your@email.com"
           class="bg-base-100/50 border-base-content/10 focus:border-primary focus:bg-base-100 transition-all placeholder:opacity-40"
           bind:value={email}
           required
@@ -115,24 +72,21 @@
       </label>
     </div>
 
-    <div class="form-control">
-      <label class="label pb-1 w-full" for="projectType">
-        <span class="label-text text-xs uppercase tracking-wider opacity-70"
-          >Project Type</span
-        >
-        <select
-          id="projectType"
-          class="w-full select bg-base-100/50 border-base-content/10 focus:border-primary focus:bg-base-100 transition-all"
-          bind:value={projectType}
-          required
-        >
-          <option value="" disabled>Select a project type</option>
-          <option value="mvp">MVP Development</option>
-          <option value="custom">Custom Solution</option>
-          <option value="partnership">Partnership</option>
-          <option value="other">Other</option>
-        </select>
-      </label>
+    <div class="">
+      <div class="form-control">
+        <label class="label pb-1" for="name">
+          <span class="label-text text-xs uppercase tracking-wider opacity-70"
+            >Name</span
+          >
+        </label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Your name"
+          class="w-full input bg-base-100/50 border-base-content/10 focus:border-primary focus:bg-base-100 transition-all placeholder:opacity-40"
+          bind:value={name}
+        />
+      </div>
     </div>
 
     <div class="form-control">

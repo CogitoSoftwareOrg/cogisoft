@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "quizbee",
+    "priority": 1,
+    "featured": true,
+    "title": "Quizbee",
+    "description": "Educational platform for interactive quizzes and learning paths.",
+    "tags": ["Education", "LMS", "Svelte"],
+    "link": "https://quizbee.academy",
+    "image": "../assets/quizbee.png",
+    "color": "from-blue-500 to-cyan-400"
+  },
+  {
+    "slug": "univerlink",
+    "featured": false,
+    "title": "Univerlink",
+    "priority": 3,
+    "description": "University portal for students mentorship and networking.",
+    "tags": ["Community", "Mentorship", "Astro"],
+    "link": "https://univerlink.cogisoft.dev",
+    "image": "../assets/univerlink.png",
+    "color": "from-blue-500 to-cyan-400"
+  },
+  {
+    "slug": "youstory",
+    "priority": 2,
+    "featured": false,
+    "title": "YouStory",
+    "description": "LLM-based Roleplay Stories Generator",
+    "tags": ["AI", "LLM", "SvelteKit"],
+    "link": "https://youstory.cogisoft.dev",
+    "image": "../assets/youstory.png",
+    "color": "from-fuchsia-500 to-pink-400"
+  },
+  {
+    "slug": "hackseeker",
+    "featured": false,
+    "title": "HackSeeker",
+    "priority": 2,
+    "description": "AI-powered platform for finding and validating product ideas.",
+    "tags": ["AI", "SaaS", "Validation"],
+    "link": "https://hackseeker.com",
+    "image": "../assets/hackseeker.png",
+    "color": "from-red-500 to-orange-400"
+  }
+]

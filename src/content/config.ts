@@ -1,5 +1,21 @@
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
+
+const labsCollection = defineCollection({
+  loader: file("./src/content/labs.json"),
+  schema: ({ image }) =>
+    z.object({
+      slug: z.string(),
+      title: z.string(),
+      description: z.string(),
+      tags: z.array(z.string()),
+      link: z.string(),
+      priority: z.number(),
+      color: z.string(),
+      featured: z.boolean(),
+      image: image().optional(),
+    }),
+});
 
 const blogCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
@@ -17,4 +33,5 @@ const blogCollection = defineCollection({
 
 export const collections = {
   blog: blogCollection,
+  labs: labsCollection,
 };

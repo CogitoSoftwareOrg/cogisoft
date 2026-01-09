@@ -1,48 +1,17 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 
-import Quizbee from "$assets/quizbee.png";
-import Growplex from "$assets/growplex.png";
-import Hackseeker from "$assets/hackseeker.png";
-
-const projects = [
-  {
-    title: "Quizbee Academy",
-    description:
-      "Educational platform for interactive quizzes and learning paths.",
-    tags: [
-      // "SvelteKit", "PocketBase", "Stripe"
-    ],
-    link: "https://quizbee.academy",
-    image: Quizbee,
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    title: "Growplex Dev",
-    description:
-      "Developer productivity tools and resource management dashboard.",
-    tags: [
-      // "Astro", "React", "Tailwind"
-    ],
-    link: "https://growplex.dev",
-    image: Growplex,
-    color: "from-emerald-500 to-teal-400",
-  },
-  {
-    title: "HackSeeker",
-    description:
-      "AI-powered platform for finding and validating product ideas.",
-    tags: [
-      // "Next.js", "Supabase", "AI Integration"
-    ],
-    link: "https://hackseeker.com",
-    image: Hackseeker,
-    color: "from-red-500 to-orange-400",
-  },
-];
+const allProjects = await getCollection("labs");
+const featuredProject =
+  allProjects.find((p) => p.data.featured) || allProjects[0];
+const otherProjects = allProjects
+  .filter((p) => p.id !== featuredProject.id)
+  .sort((a, b) => a.data.priority - b.data.priority)
+  .slice(0, 3);
 ---
 
-<section id="portfolio" class="py-20 relative">
+<section id="portfolio" class="py-10 md:py-20 relative">
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-4">
@@ -54,53 +23,115 @@ const projects = [
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="space-y-12">
+      <!-- Featured Project -->
       {
-        projects.map((project) => (
+        featuredProject && (
           <a
-            href={project.link}
+            href={featuredProject.data.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="group"
+            class="group block"
           >
-            <div class="card-terminal h-full relative overflow-hidden hover:border-primary/30">
-              <div class="h-48 overflow-hidden relative border-b-2 border-base-content/10">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span class="badge badge-primary badge-outline bg-base-100">
-                    visit ↗
-                  </span>
-                </div>
-              </div>
-
-              <div class="p-6">
-                <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-base-content/50 mb-3">
-                  <span class="led-indicator text-success" />
-                  Live deployment
-                </div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p class="text-base-content/70 mb-6 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  {project.tags.map((tag) => (
-                    <span class="px-3 py-1 rounded-none bg-base-content/5 text-[11px] font-mono border-2 border-base-content/10 uppercase tracking-widest">
-                      {tag}
+            <div class="card-terminal relative overflow-hidden hover:border-primary/30">
+              <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-2/3 h-64 lg:h-96 overflow-hidden relative border-b-2 lg:border-b-0 lg:border-r-2 border-base-content/10">
+                  {featuredProject.data.image && (
+                    <Image
+                      src={featuredProject.data.image}
+                      alt={featuredProject.data.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="badge badge-primary badge-outline bg-base-100 px-4 py-3">
+                      visit project ↗
                     </span>
-                  ))}
+                  </div>
+                </div>
+
+                <div class="lg:w-1/3 p-8 flex flex-col justify-center">
+                  <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-primary mb-4 font-bold">
+                    <span class="led-indicator text-primary" />
+                    Featured Project
+                  </div>
+                  <h3 class="text-3xl lg:text-4xl font-bold mb-4 group-hover:text-primary transition-colors">
+                    {featuredProject.data.title}
+                  </h3>
+                  <p class="text-base-content/70 mb-8 text-lg leading-relaxed">
+                    {featuredProject.data.description}
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {featuredProject.data.tags.map((tag) => (
+                      <span class="px-3 py-1 rounded-none bg-base-content/5 text-[11px] font-mono border-2 border-base-content/10 uppercase tracking-widest">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </a>
-        ))
+        )
       }
+
+      <!-- Other Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+          otherProjects.map((project) => (
+            <a
+              href={project.data.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group"
+            >
+              <div class="card-terminal h-full relative overflow-hidden hover:border-primary/30">
+                <div class="h-48 overflow-hidden relative border-b-2 border-base-content/10">
+                  {project.data.image && (
+                    <Image
+                      src={project.data.image}
+                      alt={project.data.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                  <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="badge badge-primary badge-outline bg-base-100">
+                      visit ↗
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6">
+                  <div class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-base-content/50 mb-3">
+                    <span class="led-indicator text-success" />
+                    Live deployment
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-base-content/70 mb-6 text-sm leading-relaxed line-clamp-2">
+                    {project.data.description}
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {project.data.tags.map((tag) => (
+                      <span class="px-3 py-1 rounded-none bg-base-content/5 text-[11px] font-mono border-2 border-base-content/10 uppercase tracking-widest">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- All Projects Button -->
+      <div class="text-center pt-6">
+        <a href="/labs" class="btn btn-soft btn-xl"> View All Projects </a>
+      </div>
     </div>
   </div>
 </section>
