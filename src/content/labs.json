@@ -28,7 +28,7 @@
     "title": "YouStory",
     "description": "LLM-based Roleplay Stories Generator",
     "tags": ["AI", "LLM", "SvelteKit"],
-    "link": "https://youstory.cogisoft.dev",
+    "link": "https://ys.cogitosoftware.nl",
     "image": "../assets/youstory.png",
     "color": "from-fuchsia-500 to-pink-400"
   },
