@@ -1,6 +1,7 @@
 ---
-import { Menu, X, ChevronDown } from "@lucide/astro";
+import { Menu, X, ChevronDown, Calendar } from "@lucide/astro";
 
+import CogitoLogo from "$components/Logo.astro";
 import ThemeController from "$components/ThemeController.svelte";
 import Button from "$components/Button.svelte";
 
@@ -35,9 +36,10 @@ const { path }: Props = Astro.props;
       class="text-xl font-bold tracking-tighter flex items-center gap-3 hover:opacity-80 transition-opacity"
     >
       <div
-        class="size-10 bg-base-200 border border-base-content/15 flex items-center justify-center text-primary font-mono text-lg"
+        class="size-12 flex items-center justify-center text-primary"
+        aria-label="Cogito Software logo"
       >
-        CS
+        <CogitoLogo class="size-10 text-primary" />
       </div>
       <div class="hidden sm:flex flex-col leading-non">
         <span class="text-display text-xl font-bold">Cogito Software </span>

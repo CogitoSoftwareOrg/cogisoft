@@ -1,5 +1,5 @@
 ---
-import { Mail } from "@lucide/astro";
+import { Mail, Calendar } from "@lucide/astro";
 
 import Root from "$layouts/Root.astro";
 import ContactForm from "$components/ContactForm.svelte";
@@ -55,10 +55,31 @@ import ContactForm from "$components/ContactForm.svelte";
 
         <!-- Contact Form -->
         <div class="card-terminal bg-base-200/30 p-8 md:p-10">
-          <h2 class="text-xl font-bold mb-6 flex items-center gap-3">
-            <span class="led-indicator text-success"></span>
-            Send us a message
-          </h2>
+          <div
+            class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8 pb-6 border-b border-base-content/10"
+          >
+            <div>
+              <h2 class="text-xl font-bold flex items-center gap-3 mb-1">
+                <span class="led-indicator text-success"></span>
+                Send us a message
+              </h2>
+              <p
+                class="text-[10px] uppercase tracking-widest opacity-40 font-bold"
+              >
+                Or skip the form
+              </p>
+            </div>
+            <a
+              href="https://cal.com/cogisoft/30min"
+              target="_blank"
+              class="btn btn-primary btn-outline gap-2 group"
+            >
+              <Calendar
+                class="w-4 h-4 transition-transform group-hover:scale-110"
+              />
+              Book a Call
+            </a>
+          </div>
           <ContactForm client:load />
         </div>
       </div>
