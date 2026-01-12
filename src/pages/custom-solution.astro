@@ -1,108 +1,85 @@
 ---
 import Root from "$layouts/Root.astro";
-import { Cpu, Database, Network } from "@lucide/astro";
+import Hero from "$components/Hero.astro";
+import TechStack from "$components/TechStack.astro";
+import Portfolio from "$components/Portfolio.astro";
+import Offer from "$components/Offer.astro";
+import { Cpu, Network, Layers, ArrowRight } from "@lucide/astro";
 ---
 
-<Root path="/custom-solution" title="Custom Solutions | Cogito Software">
-  <main class="relative min-h-screen flex flex-col">
-    <section
-      class="grow flex items-center justify-center relative overflow-hidden py-8 md:py-16"
-    >
-      <div class="container mx-auto px-4 z-10 relative">
-        <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-16">
-            <h1
-              class="text-5xl md:text-6xl font-bold mb-6 leading-tight tracking-tight"
-            >
-              Engineering <br />
-              <span
-                class="text-transparent bg-clip-text bg-linear-to-r from-accent to-primary"
-                >Without Limits.</span
-              >
-            </h1>
-            <p
-              class="text-xl text-base-content/70 max-w-3xl mx-auto font-light"
-            >
-              For challenges that go beyond standard web apps. We architect and
-              build self-hostable systems tailored to your infrastructure, data,
-              and operational constraints.
+<Root path="/custom-solution" title="Custom Solution | Cogito Software">
+  <main class="relative min-h-screen bg-base-100 overflow-x-hidden">
+    <Hero />
+    <TechStack />
+    <Portfolio />
+    <Offer />
+
+    <!-- New Section: Beyond the MVP / Custom Solutions -->
+    <section class="py-20 bg-base-200/50 relative overflow-hidden">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+              Beyond the MVP
+            </h2>
+            <p class="text-xl text-base-content/70 font-light">
+              While our 7-day sprint is the perfect start, we are fully equipped
+              for long-term engineering challenges.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <!-- Card 1 -->
-            <div
-              class="card-riveted p-8 hover:border-accent/50 transition-colors"
-            >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="card-riveted p-8 bg-base-100/40 border-primary/10">
               <span class="rivet-accent top-3 left-3"></span>
               <span class="rivet-accent top-3 right-3"></span>
               <span class="rivet-accent bottom-3 left-3"></span>
               <span class="rivet-accent bottom-3 right-3"></span>
               <div
-                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
-              >
-                <Cpu class="w-6 h-6" />
-              </div>
-              <h3 class="text-xl font-bold mb-3">Self-Hosted AI</h3>
-              <p class="text-sm text-base-content/70 leading-relaxed">
-                Deploy Large Language Models (LLMs) on your own hardware. Keep
-                your data private and avoid API costs. We handle the
-                quantization, serving, and optimization.
-              </p>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              class="card-riveted p-8 hover:border-accent/50 transition-colors"
-            >
-              <span class="rivet-accent top-3 left-3"></span>
-              <span class="rivet-accent top-3 right-3"></span>
-              <span class="rivet-accent bottom-3 left-3"></span>
-              <span class="rivet-accent bottom-3 right-3"></span>
-              <div
-                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
-              >
-                <Database class="w-6 h-6" />
-              </div>
-              <h3 class="text-xl font-bold mb-3">Data Pipelines</h3>
-              <p class="text-sm text-base-content/70 leading-relaxed">
-                Robust ETL processes and data warehousing. We build pipelines
-                that ingest, process, and visualize your business data in
-                real-time.
-              </p>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              class="card-riveted p-8 hover:border-accent/50 transition-colors"
-            >
-              <span class="rivet-accent top-3 left-3"></span>
-              <span class="rivet-accent top-3 right-3"></span>
-              <span class="rivet-accent bottom-3 left-3"></span>
-              <span class="rivet-accent bottom-3 right-3"></span>
-              <div
-                class="w-12 h-12 bg-base-100/40 border-2 border-base-content/10 rounded-none flex items-center justify-center text-accent mb-6"
+                class="w-12 h-12 bg-primary/10 flex items-center justify-center text-primary mb-6"
               >
                 <Network class="w-6 h-6" />
               </div>
-              <h3 class="text-xl font-bold mb-3">Complex Integrations</h3>
-              <p class="text-sm text-base-content/70 leading-relaxed">
-                Connect disparate systems into a unified workflow. We specialize
-                in gluing together legacy software, modern APIs, and hardware
-                interfaces.
+              <h3 class="text-xl font-bold mb-4">Complex Integrations</h3>
+              <p class="text-base-content/60 text-sm leading-relaxed">
+                We handle deep architectural integrations with legacy systems,
+                third-party APIs, and hardware interfaces. No system is too
+                isolated for us to connect.
+              </p>
+            </div>
+
+            <div class="card-riveted p-8 bg-base-100/40 border-primary/10">
+              <span class="rivet-accent top-3 left-3"></span>
+              <span class="rivet-accent top-3 right-3"></span>
+              <span class="rivet-accent bottom-3 left-3"></span>
+              <span class="rivet-accent bottom-3 right-3"></span>
+              <div
+                class="w-12 h-12 bg-primary/10 flex items-center justify-center text-primary mb-6"
+              >
+                <Layers class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-bold mb-4">Enterprise Scaling</h3>
+              <p class="text-base-content/60 text-sm leading-relaxed">
+                Ready for the long haul. We support multi-year projects,
+                infrastructure migrations, and building out complete engineering
+                departments for your product.
               </p>
             </div>
           </div>
 
-          <div class="text-center">
-            <p class="text-lg mb-6 text-base-content/60">
-              Every project is unique. Let's discuss your architecture.
+          <div
+            class="mt-16 p-8 border-2 border-dashed border-primary/20 bg-primary/5 text-center"
+          >
+            <h3 class="text-2xl font-bold mb-4">
+              Have a non-standard request?
+            </h3>
+            <p class="text-base-content/70 mb-8 max-w-2xl mx-auto">
+              We are ready to discuss and consider absolutely any integrations,
+              long-term partnerships, or unique technical constraints. Our
+              engineering expertise knows no bounds.
             </p>
-            <a
-              href="/contact"
-              class="btn btn-accent btn-lg text-lg px-8 shadow-lg shadow-accent/30 hover:shadow-accent/50 transition-all"
-            >
-              Consult with an Engineer
+            <a href="/contact" class="btn btn-primary btn-lg px-10">
+              Discuss Custom Project
+              <ArrowRight class="w-5 h-5 ml-2" />
             </a>
           </div>
         </div>

@@ -188,113 +188,52 @@ import CodeWindow from "$components/CodeWindow.astro";
       <div class="container mx-auto px-6">
         <div class="mb-12">
           <h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            Our Solutions
+            Our Primary Offering
           </h2>
           <div class="h-1 w-20 bg-primary rounded-full"></div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- MVP Offer -->
-          <a
-            href="/mvp-offer"
-            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-primary/30 transition-colors duration-200 p-8"
-          >
-            <span class="rivet-accent top-3 left-3"></span>
-            <span class="rivet-accent top-3 right-3"></span>
-            <span class="rivet-accent bottom-3 left-3"></span>
-            <span class="rivet-accent bottom-3 right-3"></span>
-            <div
-              class="absolute top-0 right-0 w-32 h-32 bg-primary/5 -mr-8 -mt-8 transition-all group-hover:bg-primary/10"
-            >
-            </div>
-            <div class="relative z-10">
-              <div
-                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-primary"
-              >
-                <Rocket class="w-6 h-6" />
-              </div>
-              <h3 class="text-2xl font-bold mb-2">MVP Offer</h3>
-              <div class="text-lg font-medium text-primary mb-4">
-                7 Days. $999.
-              </div>
-              <p class="text-base-content/60 mb-6">
-                Rapid fullstack prototype development to validate your
-                hypothesis.
-              </p>
-              <span
-                class="text-sm font-bold text-primary flex items-center gap-2 group-hover:gap-3 transition-all"
-              >
-                Learn more <ArrowRight class="w-4 h-4" />
-              </span>
-            </div>
-          </a>
-
-          <!-- Partnership -->
-          <a
-            href="/partnership"
-            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-secondary/30 transition-colors duration-200 p-8"
-          >
-            <span class="rivet-accent top-3 left-3"></span>
-            <span class="rivet-accent top-3 right-3"></span>
-            <span class="rivet-accent bottom-3 left-3"></span>
-            <span class="rivet-accent bottom-3 right-3"></span>
-            <div
-              class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 -mr-8 -mt-8 transition-all group-hover:bg-secondary/10"
-            >
-            </div>
-            <div class="relative z-10">
-              <div
-                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-secondary"
-              >
-                <Handshake class="w-6 h-6" />
-              </div>
-              <h3 class="text-2xl font-bold mb-2">Partnership</h3>
-              <div class="text-lg font-medium text-secondary mb-4">
-                We build, you sell.
-              </div>
-              <p class="text-base-content/60 mb-6">
-                Technical partnership for non-technical founders. Lightning
-                iterations.
-              </p>
-              <span
-                class="text-sm font-bold text-secondary flex items-center gap-2 group-hover:gap-3 transition-all"
-              >
-                Learn more <ArrowRight class="w-4 h-4" />
-              </span>
-            </div>
-          </a>
-
-          <!-- Custom Solutions -->
+        <div class="max-w-4xl mx-auto">
+          <!-- Custom Solution (Rebranded MVP) -->
           <a
             href="/custom-solution"
-            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-accent/30 transition-colors duration-200 p-8"
+            class="group relative overflow-hidden card-terminal bg-base-100/40 hover:border-primary/30 transition-colors duration-200 p-8 md:p-12 block"
           >
             <span class="rivet-accent top-3 left-3"></span>
             <span class="rivet-accent top-3 right-3"></span>
             <span class="rivet-accent bottom-3 left-3"></span>
             <span class="rivet-accent bottom-3 right-3"></span>
             <div
-              class="absolute top-0 right-0 w-32 h-32 bg-accent/5 -mr-8 -mt-8 transition-all group-hover:bg-accent/10"
+              class="absolute top-0 right-0 w-64 h-64 bg-primary/5 -mr-16 -mt-16 transition-all group-hover:bg-primary/10 rounded-full"
             >
             </div>
-            <div class="relative z-10">
+            <div
+              class="relative z-10 flex flex-col md:flex-row gap-8 items-center md:items-start"
+            >
               <div
-                class="mb-6 inline-flex p-3 rounded-none bg-base-100/40 border-2 border-base-content/10 text-accent"
+                class="inline-flex p-6 rounded-none bg-base-100/40 border-2 border-base-content/10 text-primary"
               >
-                <Cpu class="w-6 h-6" />
+                <Rocket class="w-12 h-12" />
               </div>
-              <h3 class="text-2xl font-bold mb-2">Custom Solutions</h3>
-              <div class="text-lg font-medium text-accent mb-4">
-                Complex Integrations.
+              <div class="flex-1 text-center md:text-left">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">
+                  Custom Solution
+                </h3>
+                <div class="text-xl font-medium text-primary mb-6">
+                  Deployment-ready prototype in 7 days.
+                </div>
+                <p class="text-lg text-base-content/60 mb-8 max-w-2xl">
+                  We specialize in rapid high-quality builds. Get a
+                  production-grade foundation with full code ownership and no
+                  vendor lock-in. Perfect for validating new product concepts or
+                  scaling existing ones.
+                </p>
+                <span
+                  class="text-lg font-bold text-primary flex items-center justify-center md:justify-start gap-2 group-hover:gap-4 transition-all"
+                >
+                  Explore Solution <ArrowRight class="w-6 h-6" />
+                </span>
               </div>
-              <p class="text-base-content/60 mb-6">
-                Tailored software solutions for unique business challenges.
-              </p>
-              <span
-                class="text-sm font-bold text-accent flex items-center gap-2 group-hover:gap-3 transition-all"
-              >
-                Learn more <ArrowRight class="w-4 h-4" />
-              </span>
             </div>
           </a>
         </div>

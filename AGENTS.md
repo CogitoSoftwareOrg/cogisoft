@@ -206,9 +206,7 @@ import InteractiveDemo from "./components/InteractiveDemo.svelte";
 - **`src/pages/`**: Main marketing pages
   - `/`: Homepage
   - `/contact`: Contact page
-  - `/partnership`: Partnership page
-  - `/custom-solution`: Custom solution page
-  - `/mvp-offer`: MVP offer page
+  - `/custom-solution`: Custom solution page (Primary offering)
   - `/[zero]/*`: Zero-landings # aka "magiclink"
   - `/privacy-policy`, `/terms-and-conditions`: Legal pages
 
