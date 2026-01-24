@@ -6,6 +6,12 @@
 
 @custom-variant dark (&:where([data-theme=DARK], [data-theme=DARK] *));
 
+/* Fonts */
+@import "@fontsource/space-grotesk";
+@import "@fontsource/outfit";
+@import "@fontsource/space-mono";
+@import "@fontsource/ibm-plex-mono";
+
 /* LIGHT — Sharp, Technical, Clean */
 @plugin 'daisyui/theme' {
   name: "LIGHT";
@@ -108,12 +114,6 @@
   --noise: 0;
 }
 
-/* Fonts */
-@import "@fontsource/space-grotesk";
-@import "@fontsource/outfit";
-@import "@fontsource/space-mono";
-@import "@fontsource/ibm-plex-mono";
-
 @theme {
   /* --font-display: "Space Grotesk", sans-serif; */
   --font-display: "Outfit", sans-serif;
@@ -141,14 +141,14 @@
     var(--color-primary) 100%
   );
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 20px -5px color-mix(in oklch, var(--color-primary), transparent
-        70%);
+  box-shadow: 0 10px 20px -5px
+    color-mix(in oklch, var(--color-primary), transparent 70%);
 }
 
 .btn-glow:hover {
   background-position: right center;
-  box-shadow: 0 15px 30px -10px color-mix(in oklch, var(--color-primary), transparent
-        50%);
+  box-shadow: 0 15px 30px -10px
+    color-mix(in oklch, var(--color-primary), transparent 50%);
   transform: translateY(-2px);
 }
 
@@ -158,7 +158,8 @@
 
 @utility glass-panel {
   @apply backdrop-blur-xl bg-base-100/60 border border-base-content/10 shadow-xl;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px
       color-mix(in oklch, var(--color-base-content), transparent 90%);
 }
@@ -183,7 +184,8 @@ body {
 @utility glass {
   @apply backdrop-blur-md bg-base-200/40 border-2 border-base-content/10 shadow-none;
   border-radius: var(--radius-box);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
     0 0 0 1px rgba(0, 0, 0, 0.2);
 }
 @utility glass-card {
@@ -192,11 +194,8 @@ body {
 /* Geometric Background Pattern */
 @utility bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: linear-gradient(
-      to right,
-      var(--color-base-content) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(to right, var(--color-base-content) 1px, transparent 1px),
     linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black, transparent 80%);
   opacity: 0.1;
@@ -311,11 +310,8 @@ body {
 /* Делает интерфейс похожим на инженерный софт */
 @utility bg-grid-tech {
   background-size: 20px 20px;
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
